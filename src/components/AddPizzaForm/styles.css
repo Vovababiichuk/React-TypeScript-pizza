@@ -1,0 +1,74 @@
+
+/* Форма */
+form {
+  /* margin-bottom: 10px; */
+  /* border: 2px solid #000; */
+  overflow: hidden;
+  display: -webkit-box;
+  display: flex;
+  flex-wrap: wrap;
+  /* max-width: 520px; */
+}
+
+form input {
+  width: 100%;
+  padding: 10px;
+  margin: 10px;
+  line-height: 1;
+  font-size: 18px;
+  /* border: 0; */
+  /* border-bottom: 1px solid #000; */
+  /* border-right: 1px solid #000; */
+  border-radius: 10px;
+  background: #ffffff;
+  border: none;
+}
+
+form input:focus {
+  outline: 0;
+  background: #ffffff;
+}
+
+form input:last-of-type {
+  margin-bottom: 20px;
+}
+form button {
+  width: 100%;
+  border: 0;
+  font-size: 16px;
+  transition: opacity 0.2s ease-in-out;
+}
+
+form button:hover {
+  opacity: 0.9;
+}
+
+button,
+input[type=submit] {
+  text-transform: uppercase;
+  padding: 10px 15px;
+  border: none;
+  background: rgb(97, 29, 255);
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+  max-width: 50%;
+  margin: 0 auto;
+  border-radius: 10px;
+}
+
+::placeholder {
+  color: rgb(210, 210, 210);
+}
+
+.icon {
+  font-size: 28px;
+}
+
+.add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 22px;
+}
