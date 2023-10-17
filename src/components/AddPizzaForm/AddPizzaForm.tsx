@@ -1,7 +1,12 @@
 import { FC, useState, ChangeEvent, FormEvent } from 'react'
 import './styles.css'
+import Pizza from '../../models/Pizza'
 import { HiPlusCircle } from 'react-icons/hi'
 
+
+interface AddPizzaFormProps {
+	addPizza: (newPizza: Pizza) => void;
+}
 
 //NOTE - пропишем початкове значення полей для початкового стану (newPizza)
 const initState = {
@@ -10,7 +15,7 @@ const initState = {
 	img: '',
 }
 
-export const AddPizzaForm: FC = () => {
+export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
 	const [newPizza, setNewPizza] =
 		useState<{ title: string; price: string; img: string }>(initState)
 
@@ -27,7 +32,18 @@ export const AddPizzaForm: FC = () => {
 
 	const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
 		e.preventDefault()
-		console.log('handle submit >>', e.target)
+
+		const { title, price, img } = newPizza
+
+		if (title && price && img) {
+			addPizza({
+				title,
+				img,
+				price: Number(price),
+				id: Math.floor(Math.random() * 9000),
+			})
+			setNewPizza(initState)
+		}
 	}
 
 	console.log(newPizza)
