@@ -1,23 +1,25 @@
-@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap");
+/* @import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@400&display=swap"); */
 
 * {
   box-sizing: border-box;
+  /* background-color: #1a1a1a; */
 }
 
-.App {
+/* .App {
   width: 100vw;
   min-height: 100vh;
   font-family: "Montserrat";
-}
+} */
 
-.wrap {
-  max-width: 600px;
+/* .wrap {
+  max-width: 800px;
   margin: 0 auto;
+  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
+} */
+/* 
 .heading {
   text-transform: uppercase;
   font-size: 40px;
@@ -25,11 +27,21 @@
   z-index: 1;
   text-align: center;
   color: #fff;
-}
+  text-align: center;
+  display: block;
+} */
 
-@media (max-width: 800px) {
+/* @media (max-width: 800px) {
   .heading {
     margin: 15px 0;
     font-size: 35px;
   }
+} */
+
+.heading {
+  text-align: center;
+  display: block;
+  padding: 30px 0;
+  color: #fff;
+  font-size: 28px;
 }
