@@ -395,7 +395,6 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
             </div>
           </div>
         </Stack>
-
         <Center>
           <Button
             variant="outline"
