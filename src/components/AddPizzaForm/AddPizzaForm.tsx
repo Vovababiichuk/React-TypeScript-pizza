@@ -57,9 +57,22 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
 
   const [currentImageList, setCurrentImageList] = useState(imageLists[newPizza.category] || []);
 
+  const productOptions: { [key: string]: string[] } = {
+    option2: ["💥 Піца 3 Мяса", "💥 Піца Європейська", "💥 Піца 4 Сири", "💥 Піца Цезар", "💥 Піца Діабло"],
+    option3: ["💥 Піца Барбек'ю", "💥 Піца Венеція", "💥 Піца Монтана", "💥 Піца Фунгі", '💥 Піца "БУМ"'],
+    option4: ["💥 Фіш & Чіпс", "💥 Чікен & Чіпс", "💥 Цибулеві кільця New York", "💥 Картопля Фрі", "💥 Картопля по-селянськи"],
+    option5: ["💥 Салат Сантана (250г)", "💥 Салат з курки (250г)", '💥 Салат Каліфорнія (250г)', "💥 Салат Грецький (250г)", "💥 Салат Проковтний язик (250г)"],
+  };
+
+
+  const [currentProductOptions, setCurrentProductOptions] = useState(
+    productOptions[newPizza.category] || [],
+  );
+
   useEffect(() => {
-    // Оновлюємо currentImageList тільки при зміні категорії
+    // Оновлюємо currentImageList і currentProductOptions тільки при зміні категорії
     setCurrentImageList(imageLists[newPizza.category] || []);
+    setCurrentProductOptions(productOptions[newPizza.category] || []);
   }, [newPizza.category]);
 
   const handleImageDrop = (e: React.DragEvent<HTMLDivElement>, imageName: string) => {
@@ -115,7 +128,6 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
 
   return (
     <Box
-      bg="blackAlpha.400"
       bgImage={'public/img/bg18.jpg'}
       backgroundSize={'cover'}
       borderRadius="lg"
@@ -152,14 +164,15 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
               placeholder="Виберіть назву"
               name="title"
               value={newPizza.title}
-              onChange={handleChange}>
-              <option value="european">Піца Європейська</option>
-              <option value="meat">Піца з Мяса</option>
-              <option value="hawaiian">Піца Гавайська</option>
-              <option value="fourCheese">Піца 4 Сири</option>
-              <option value="caesar">Піца Цезар</option>
-              <option value="pepperoni">Піца Папероні</option>
-              <option value="diablo">Піца Діабло</option>
+              onChange={handleChange}
+              >
+
+              {currentProductOptions.map((product, index) => (
+                <option key={index} value={product}>
+                  {product}
+                </option>
+              ))}
+
             </Select>
           </div>
           <div>
@@ -233,7 +246,14 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
         </Stack>
         <Center>
           <Stack direction="row" spacing={4}>
-            <Button onClick={handleSubmit} rightIcon={<AddIcon />} colorScheme="orange" variant="outline" borderColor={'rgb(255, 180, 41)'} color={'rgb(255, 180, 41)'}>
+            <Button
+              onClick={handleSubmit}
+              rightIcon={<AddIcon />}
+              colorScheme="orange"
+              variant="outline"
+              borderColor={'rgb(255, 180, 41)'}
+              color={'rgb(255, 180, 41)'}
+              marginBottom={2}>
               ДОДАТИ В МЕНЮ
             </Button>
           </Stack>
