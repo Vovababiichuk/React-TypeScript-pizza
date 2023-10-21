@@ -90,8 +90,9 @@ input[type=submit] {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  gap: 10px;
+  gap: 34px;
   flex-wrap: wrap;
+  margin-bottom: 18px;
 }
 
 .image-item {
@@ -104,7 +105,7 @@ input[type=submit] {
   object-fit: cover;
 
   border-radius: 10px;
-  margin: 10px;
+  /* margin: 10px; */
   border: 1px solid #000;
   cursor: grab;
 
@@ -112,6 +113,11 @@ input[type=submit] {
 
 .img-listCategory:active {
   cursor: grabbing;
+}
+
+.drop-text {
+  text-align: center;
+  text-transform: uppercase;
 }
 
 

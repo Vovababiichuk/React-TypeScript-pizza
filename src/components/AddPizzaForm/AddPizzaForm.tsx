@@ -98,6 +98,8 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
       });
       setNewPizza(initState);
       setSelectedOption('');
+    } else {
+      alert('Будь ласка, заповніть всі поля');
     }
   };
 
@@ -112,7 +114,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
   };
 
   return (
-    <Box bg="blackAlpha.600" borderRadius="lg" w="600px" p={4} color="white" border="1px solid orange.300">
+    <Box bg="blackAlpha.500" borderRadius="lg" w="600px" p={4} color="white" border="1px solid orange.300">
       <FormControl>
         <Stack marginBottom={5} spacing={3}>
           <div>
@@ -133,7 +135,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
             </Select>
           </div>
           <div>
-            <FormLabel color="rgb(255, 180, 41">Продукт</FormLabel>
+            <FormLabel color="rgb(255, 180, 41)">Продукт</FormLabel>
             <Select
               className="select-style"
               bg="gray.900"
@@ -153,7 +155,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
             </Select>
           </div>
           <div>
-            <FormLabel color="rgb(255, 180, 41">Ціна</FormLabel>
+            <FormLabel color="rgb(255, 180, 41)">Ціна</FormLabel>
             <Input
               required
               type="number"
@@ -170,53 +172,56 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
               placeholder={isFocused ? ' ₴' : 'Встановіть ціну'}
             />
           </div>
-          <div>
-            <FormLabel color="rgb(255, 180, 41">Фото</FormLabel>
-            <div className="image-list">
-              {currentImageList.map((image, index) => (
-                <div
-                  key={index}
-                  draggable
-                  onDragStart={(e) => e.dataTransfer.setData('image', image)}
-                  className="image-item"
-                  onClick={() => handleImageDrop(e, image)}>
-                  <img
-                    className="img-listCategory"
-                    width={'100px'}
-                    height={'100px'}
-                    src={image}
-                    alt={`Фото ${index}`}
-                  />
-                </div>
-              ))}
+          <Center>
+            <div>
+              <FormLabel color="rgb(255, 180, 41)" textAlign={'center'} marginBottom={0} fontSize={'18px'} marginRight={0}>Фото</FormLabel>
+              <div className="image-list">
+                {currentImageList.map((image, index) => (
+                  <div
+                    key={index}
+                    draggable
+                    onDragStart={(e) => e.dataTransfer.setData('image', image)}
+                    className="image-item"
+                    onClick={() => handleImageDrop(e, image)}>
+                    <img
+                      className="img-listCategory"
+                      width={'100px'}
+                      height={'100px'}
+                      src={image}
+                      alt={`Фото ${index}`}
+                    />
+                  </div>
+                ))}
+              </div>
+              <div
+              className='drop-text'
+                onDrop={(e) => {
+                  e.preventDefault();
+                  const image = e.dataTransfer.getData('image');
+                  setNewPizza({
+                    ...newPizza,
+                    img: image,
+                  });
+                  setSelectedOption(image); // Оновлення вибраної опції
+                }}
+                onDragOver={(e) => e.preventDefault()}
+                style={{
+                  width: '120px',
+                  height: '80px',
+                  border: '2px dashed #ddd',
+                  display: 'flex',
+                  // alignItems: 'center',
+                  // justifyContent: 'center',
+                  fontSize: '16px',
+                }}>
+                {newPizza.img ? (
+                  <img src={newPizza.img} alt="Вибране фото" />
+                ) : (
+                  'Перетягніть сюди картинку'
+                )}
+              </div>
             </div>
-            <div
-              onDrop={(e) => {
-                e.preventDefault();
-                const image = e.dataTransfer.getData('image');
-                setNewPizza({
-                  ...newPizza,
-                  img: image,
-                });
-                setSelectedOption(image); // Оновлення вибраної опції
-              }}
-              onDragOver={(e) => e.preventDefault()}
-              style={{
-                width: '120px',
-                height: '80px',
-                border: '2px dashed #ddd',
-                display: 'flex',
-                // alignItems: 'center',
-                // justifyContent: 'center',
-                fontSize: '16px',
-              }}>
-              {newPizza.img ? (
-                <img src={newPizza.img} alt="Вибране фото" />
-              ) : (
-                'Перетягніть сюди картинку'
-              )}
-            </div>
-          </div>
+          </Center>
         </Stack>
         <Center>
           <Button
