@@ -4,6 +4,7 @@ import { Button, Center } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import Pizza from '../../models/Pizza';
 import './styles.css';
+import { color } from 'framer-motion';
 
 interface AddPizzaFormProps {
   addPizza: (newPizza: Pizza) => void;
@@ -21,7 +22,6 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
   const [selectedOption, setSelectedOption] = useState('');
 
   const imageLists: { [key: string]: string[] } = {
-
     option2: [
       'public/img/hit/1.png',
       'public/img/hit/2.png',
@@ -114,7 +114,15 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
   };
 
   return (
-    <Box bg="blackAlpha.500" borderRadius="lg" w="600px" p={4} color="white" border="1px solid orange.300">
+    <Box
+      bg="blackAlpha.400"
+      bgImage={'public/img/bg18.jpg'}
+      backgroundSize={'cover'}
+      borderRadius="lg"
+      w="600px"
+      p={4}
+      color="white"
+      border="1px solid orange.300">
       <FormControl>
         <Stack marginBottom={5} spacing={3}>
           <div>
@@ -174,7 +182,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
           </div>
           <Center>
             <div>
-              <FormLabel color="rgb(255, 180, 41)" textAlign={'center'} marginBottom={0} fontSize={'18px'} marginRight={0}>Фото</FormLabel>
+              {/* <FormLabel color="rgb(255, 180, 41)" textAlign={'center'} marginBottom={0} fontSize={'18px'} marginRight={0}>Фото</FormLabel> */}
               <div className="image-list">
                 {currentImageList.map((image, index) => (
                   <div
@@ -194,7 +202,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
                 ))}
               </div>
               <div
-              className='drop-text'
+                className="drop-text"
                 onDrop={(e) => {
                   e.preventDefault();
                   const image = e.dataTransfer.getData('image');
@@ -208,7 +216,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
                 style={{
                   width: '120px',
                   height: '80px',
-                  border: '2px dashed #ddd',
+                  border: '2px dashed rgb(255, 180, 41)',
                   display: 'flex',
                   // alignItems: 'center',
                   // justifyContent: 'center',
@@ -224,13 +232,11 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
           </Center>
         </Stack>
         <Center>
-          <Button
-            variant="outline"
-            colorScheme="tomate"
-            leftIcon={<AddIcon />}
-            onClick={handleSubmit}>
-            ДОДАТИ В МЕНЮ
-          </Button>
+          <Stack direction="row" spacing={4}>
+            <Button onClick={handleSubmit} rightIcon={<AddIcon />} colorScheme="orange" variant="outline" borderColor={'rgb(255, 180, 41)'} color={'rgb(255, 180, 41)'}>
+              ДОДАТИ В МЕНЮ
+            </Button>
+          </Stack>
         </Center>
       </FormControl>
     </Box>
