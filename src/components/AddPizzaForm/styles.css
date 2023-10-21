@@ -86,4 +86,32 @@ input[type=submit] {
   border-radius: 6px;
 }
 
+.image-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.image-item {
+  /* mix-blend-mode: multiply; */
+}
+
+.img-listCategory {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+
+  border-radius: 10px;
+  margin: 10px;
+  border: 1px solid #000;
+  cursor: grab;
+
+}
+
+.img-listCategory:active {
+  cursor: grabbing;
+}
+
 
