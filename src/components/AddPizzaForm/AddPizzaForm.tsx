@@ -1,37 +1,27 @@
-import { FC, useState, ChangeEvent, FormEvent } from 'react';
-import './styles.css';
-import Pizza from '../../models/Pizza';
-import { HiPlusCircle } from 'react-icons/hi';
-
+import React, { FC, useState, FormEvent } from 'react';
 import { Box, FormControl, FormLabel, Input, Select, Stack } from '@chakra-ui/react';
-import { HStack, Button } from '@chakra-ui/react';
+import { Button, Center } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
-
-import {
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
-} from '@chakra-ui/react';
+import { SelectWithImages } from '../SelectWithImage/SelectWithImage'; // Припускається, що компонент `SelectWithImages` розташований у тому ж каталозі
+import Pizza from '../../models/Pizza';
+import './styles.css';
 
 interface AddPizzaFormProps {
   addPizza: (newPizza: Pizza) => void;
 }
 
-//NOTE - пропишем початкове значення полей для початкового стану (newPizza)
 const initState = {
+  category: '',
   title: '',
   price: '',
   img: '',
 };
 
 export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
-  const [newPizza, setNewPizza] = useState<{ title: string; price: string; img: string }>(
-    initState,
-  );
+  const [newPizza, setNewPizza] = useState(initState);
+  const [selectedOption, setSelectedOption] = useState('');
 
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (e) => {
     const { name, value } = e.target;
 
     setNewPizza({
@@ -40,102 +30,156 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
     });
   };
 
-  console.log('new pizza, newPizza');
-
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const { title, price, img } = newPizza;
+    console.log('Вибрана категорія:', newPizza.category); // Виводимо вибрану категорію
+    console.log('Вибрана назва продукту:', newPizza.title); // Виводимо вибрану назву продукту
+    console.log('Вибране фото:', selectedOption);
+    console.log('Ціна:', newPizza.price);
 
-    if (title && price && img) {
+    if (newPizza.title && newPizza.price && selectedOption && newPizza.category) {
       addPizza({
-        title,
-        img,
-        price: Number(price),
+        title: newPizza.title,
+        img: selectedOption,
+        price: Number(newPizza.price),
+        category: newPizza.category, // Додаємо категорію до карточки товару
         id: Math.floor(Math.random() * 9000),
       });
       setNewPizza(initState);
+      setSelectedOption('');
     }
   };
 
-  console.log(newPizza);
+  const [isFocused, setIsFocused] = useState(false);
+
+  const handleFocus = () => {
+    setIsFocused(true);
+  };
+
+  const handleBlur = () => {
+    setIsFocused(false);
+  };
 
   return (
-    <Box bg="whiteAlpha.100" borderRadius={'lg'} w="600px" p={4} color="white">
+    <Box
+      bg="blackAlpha.400"
+      borderRadius="lg"
+      w="600px"
+      p={4}
+      color="white"
+      border="1px solid orange.300">
       <FormControl>
-        <Stack spacing={3}>
+        <Stack marginBottom={5} spacing={3}>
           <div>
-            <FormLabel color="grey">Піца</FormLabel>
+            <FormLabel color="rgb(255, 180, 41)">Категорія</FormLabel>
             <Select
+              className="select-style select-style--category"
               bg="gray.900"
               borderColor="orange.300"
               variant="outline"
-              placeholder="Виберіть піцу">
-              <option value="option1">Піца Європейська</option>
-              <option value="option1">Піца з Мяса</option>
-              <option value="option1">Піца Гавайська</option>
-              <option value="option1">Піца 4 Сири</option>
-              <option value="option1">Піца Цезар</option>
-              <option value="option1">Піца Папероні</option>
-              <option value="option1">Піца Діабло</option>
+              name="category"
+              placeholder="Виберіть категорію"
+              value={newPizza.category}
+              onChange={handleChange}>
+              <option value="option2">🏆 Xіт продажів</option>
+              <option value="option3">🍕 Новинки</option>
+              <option value="option4">🍟 Основні страви</option>
             </Select>
           </div>
           <div>
-            <FormLabel color="grey">Ціна</FormLabel>
+            <FormLabel color="rgb(255, 180, 41)">Продукт</FormLabel>
+            <Select
+              className="select-style"
+              bg="gray.900"
+              borderColor="orange.300"
+              variant="outline"
+              placeholder="Виберіть назву"
+              name="title"
+              value={newPizza.title}
+              onChange={handleChange}>
+              <option value="european">Піца Європейська</option>
+              <option value="meat">Піца з Мяса</option>
+              <option value="hawaiian">Піца Гавайська</option>
+              <option value="fourCheese">Піца 4 Сири</option>
+              <option value="caesar">Піца Цезар</option>
+              <option value="pepperoni">Піца Папероні</option>
+              <option value="diablo">Піца Діабло</option>
+            </Select>
+          </div>
+          <div>
+            <FormLabel color="rgb(255, 180, 41)">Ціна</FormLabel>
             <Input
               required
               type="number"
               bg="gray.900"
               borderColor="orange.300"
-              placeholder="200-500₴"
+              // placeholder="Встановіть ціну"
+              _placeholder={{
+                color: '#fff',
+              }}
+              name="price"
+              value={newPizza.price}
+              onChange={handleChange}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              placeholder={isFocused ? ' ₴' : 'Встановіть ціну'}
+
+              // _focus={{
+              //   _placeholder: {
+              //     opacity: 0, // Робить плейсхолдер невидимим при фокусі
+              //   },
+              // }}
             />
           </div>
           <div>
-            <FormLabel color="grey">Фото</FormLabel>
-            <Input
-              required
-              bg="gray.900"
-              borderColor="orange.300"
-              type="number"
-              placeholder="1-7"
-              marginBottom={7}
-            />
+            <FormLabel color="rgb(255, 180, 41)">Фото</FormLabel>
+            <div className="select-photo">
+              <SelectWithImages
+                value={selectedOption}
+                onChange={(value) => setSelectedOption(value)}
+              />
+            </div>
           </div>
         </Stack>
-        <HStack>
-          <Button variant="outline" colorScheme="tomate" leftIcon={<AddIcon />}>
+
+        {/* <div>
+          <FormLabel color="rgb(255, 180, 41)">Фото</FormLabel>
+          <div
+            onDrop={(e) => {
+              e.preventDefault();
+              const file = e.dataTransfer.files[0];
+              if (file) {
+                const fileName = file.name;
+                setNewPizza({
+                  ...newPizza,
+                  img: fileName, // Замінюємо поле img іменем файлу
+                });
+              }
+            }}
+            onDragOver={(e) => e.preventDefault()}
+            style={{
+              width: '100px',
+              height: '100px',
+              border: '2px dashed #ddd',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+            }}>
+            {newPizza.img ? newPizza.img : 'Перетягніть сюди картинку'}
+          </div>
+        </div> */}
+
+        <Center>
+          <Button
+            variant="outline"
+            colorScheme="tomate"
+            leftIcon={<AddIcon />}
+            onClick={handleSubmit}>
             ДОДАТИ В МЕНЮ
           </Button>
-        </HStack>
+        </Center>
       </FormControl>
     </Box>
-
-    // <form onSubmit={handleSubmit}>
-    // 	<input
-    // 		type='text'
-    // 		name='title'
-    // 		placeholder='Name'
-    // 		onChange={handleChange}
-    // 		value={newPizza.title}
-    // 	/>
-    // 	<input
-    // 		type='number'
-    // 		name='price'
-    // 		placeholder='Price'
-    // 		onChange={handleChange}
-    // 		value={newPizza.price}
-    // 	/>
-    // 	<input
-    // 		type='text'
-    // 		name='img'
-    // 		placeholder='Images'
-    // 		onChange={handleChange}
-    // 		value={newPizza.img}
-    // 	/>
-    // 	<button type='submit' className='add'>
-    // 		<span>Add in menu</span>
-    // 		<span className='icon'><HiPlusCircle /></span>
-    // 	</button>
-    // </form>
   );
 };

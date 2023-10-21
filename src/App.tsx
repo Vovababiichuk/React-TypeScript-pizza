@@ -23,7 +23,7 @@ const App: FC = () => {
   return (
     <>
       <Wrapper>
-        <span className="heading">New York Street Pizza</span>
+        <span className="heading">Формування Меню</span>
           <Center>
             <AddPizzaForm addPizza={addPizza} />
             {/* <DisplayPizzas pizzasList={pizzasList} /> */}
