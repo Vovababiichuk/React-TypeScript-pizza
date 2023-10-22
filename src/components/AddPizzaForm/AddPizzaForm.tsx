@@ -9,6 +9,8 @@ import { Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react
 
 import { DefaultImageList, MobileImageList } from './stylePizzaComponent';
 
+import { Textarea } from '@chakra-ui/react';
+
 interface AddPizzaFormProps {
   addPizza: (newPizza: Pizza) => void;
 }
@@ -18,6 +20,8 @@ const initState = {
   title: '',
   price: '',
   img: '',
+  description: '',
+  created: new Date(),
 };
 
 export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
@@ -117,8 +121,9 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
     };
   }, []);
 
-
-  const handleChange = (e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>) => {
+  const handleChange = (
+    e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>,
+  ) => {
     const { name, value } = e.target;
 
     setNewPizza({
@@ -147,7 +152,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
   };
 
   const showWarningAlert = () => {
-    setErrorMessage('Ваше повідомлення про помилку тут');
+    setErrorMessage('Заповніть всі поля і виберіть фото');
     setTimeout(() => {
       setErrorMessage('');
     }, 4000);
@@ -156,18 +161,28 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
   const handleSubmit = (e: FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    console.log('Вибрана категорія:', newPizza.category);
-    console.log('Вибрана назва продукту:', newPizza.title);
+    console.log('Категорія:', newPizza.category);
+    console.log('Назва продукту:', newPizza.title);
     console.log('Вибране фото:', selectedOption);
     console.log('Ціна:', newPizza.price);
+    console.log('Опис:', newPizza.description);
+    console.log('Дата створення:', newPizza.created);
 
-    if (newPizza.title && newPizza.price && selectedOption && newPizza.category) {
+    if (
+      newPizza.title &&
+      newPizza.price &&
+      selectedOption &&
+      newPizza.category &&
+      newPizza.description
+    ) {
       addPizza({
-        title: newPizza.title,
-        img: selectedOption,
-        price: Number(newPizza.price),
-        category: newPizza.category, // Додаємо категорію до карточки товару
         id: Math.floor(Math.random() * 9000),
+        title: newPizza.title,
+        price: Number(newPizza.price),
+        img: selectedOption,
+        category: newPizza.category, // Додаємо категорію до карточки товару
+        description: newPizza.description,
+        created: new Date(),
       });
       setNewPizza(initState);
       setSelectedOption('');
@@ -277,8 +292,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
                     <div
                       key={index}
                       draggable
-                      onDragStart={(e) => e.dataTransfer.setData('image', image)}
-                    >
+                      onDragStart={(e) => e.dataTransfer.setData('image', image)}>
                       <img
                         className="img-listCategory"
                         width={'100px'}
@@ -369,6 +383,23 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
             </div>
           </Center>
         </Stack>
+
+        <div>
+            <FormLabel color="rgb(255, 180, 41)">Опис</FormLabel>
+            <Textarea
+              className="select-style"
+              bg="gray.900"
+              borderColor="orange.300"
+              name="description"
+              value={newPizza.description}
+              onChange={handleChange}
+              isDisabled={currentStep < 3}
+              onFocus={handleFocus}
+              onBlur={handleBlur}
+              placeholder="Додайте опис"
+            />
+          </div>
+
         <Center>
           <Stack direction="row" spacing={4}>
             <Button
