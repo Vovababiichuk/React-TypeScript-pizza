@@ -21,6 +21,8 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
   const [newPizza, setNewPizza] = useState(initState);
   const [selectedOption, setSelectedOption] = useState('');
 
+  const [currentStep, setCurrentStep] = useState(1);
+
   const imageLists: { [key: string]: string[] } = {
     option2: [
       'public/img/hit/1.png',
@@ -58,12 +60,35 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
   const [currentImageList, setCurrentImageList] = useState(imageLists[newPizza.category] || []);
 
   const productOptions: { [key: string]: string[] } = {
-    option2: ["💥 Піца 3 Мяса", "💥 Піца Європейська", "💥 Піца 4 Сири", "💥 Піца Цезар", "💥 Піца Діабло"],
-    option3: ["💥 Піца Барбек'ю", "💥 Піца Венеція", "💥 Піца Монтана", "💥 Піца Фунгі", '💥 Піца "БУМ"'],
-    option4: ["💥 Фіш & Чіпс", "💥 Чікен & Чіпс", "💥 Цибулеві кільця New York", "💥 Картопля Фрі", "💥 Картопля по-селянськи"],
-    option5: ["💥 Салат Сантана (250г)", "💥 Салат з курки (250г)", '💥 Салат Каліфорнія (250г)', "💥 Салат Грецький (250г)", "💥 Салат Проковтний язик (250г)"],
+    option2: [
+      '💥 Піца 3 Мяса',
+      '💥 Піца Європейська',
+      '💥 Піца 4 Сири',
+      '💥 Піца Цезар',
+      '💥 Піца Діабло',
+    ],
+    option3: [
+      "💥 Піца Барбек'ю",
+      '💥 Піца Венеція',
+      '💥 Піца Монтана',
+      '💥 Піца Фунгі',
+      '💥 Піца "БУМ"',
+    ],
+    option4: [
+      '💥 Фіш & Чіпс',
+      '💥 Чікен & Чіпс',
+      '💥 Цибулеві кільця New York',
+      '💥 Картопля Фрі',
+      '💥 Картопля по-селянськи',
+    ],
+    option5: [
+      '💥 Салат Сантана (250г)',
+      '💥 Салат з курки (250г)',
+      '💥 Салат Каліфорнія (250г)',
+      '💥 Салат Грецький (250г)',
+      '💥 Салат Проковтний язик (250г)',
+    ],
   };
-
 
   const [currentProductOptions, setCurrentProductOptions] = useState(
     productOptions[newPizza.category] || [],
@@ -91,6 +116,15 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
       ...newPizza,
       [name]: value,
     });
+
+    // Змінюємо поточний крок в залежності від вибору користувача
+    if (name === 'category') {
+      setCurrentStep(2);
+    } else if (name === 'title') {
+      setCurrentStep(3);
+    } else if (name === 'price') {
+      setCurrentStep(4);
+    }
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -111,6 +145,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
       });
       setNewPizza(initState);
       setSelectedOption('');
+      setCurrentStep(1); // Після додавання скидаємо крок назад
     } else {
       alert('Будь ласка, заповніть всі поля');
     }
@@ -147,7 +182,9 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
               name="category"
               placeholder="Виберіть категорію"
               value={newPizza.category}
-              onChange={handleChange}>
+              onChange={handleChange}
+              isDisabled={currentStep < 1} // Поле неактивне, якщо крок менше 1
+            >
               <option value="option2">🏆 Xіт продажів</option>
               <option value="option3">🍕 Новинки</option>
               <option value="option4">🍟 Основні страви</option>
@@ -165,14 +202,13 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
               name="title"
               value={newPizza.title}
               onChange={handleChange}
-              >
-
+              isDisabled={currentStep < 2} // Поле неактивне, якщо крок менше 2
+            >
               {currentProductOptions.map((product, index) => (
                 <option key={index} value={product}>
                   {product}
                 </option>
               ))}
-
             </Select>
           </div>
           <div>
@@ -191,6 +227,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
               onFocus={handleFocus}
               onBlur={handleBlur}
               placeholder={isFocused ? ' ₴' : 'Встановіть ціну'}
+              isDisabled={currentStep < 3} // Поле неактивне, якщо крок менше 3
             />
           </div>
           <Center>
@@ -202,8 +239,12 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
                     key={index}
                     draggable
                     onDragStart={(e) => e.dataTransfer.setData('image', image)}
-                    className="image-item"
-                    onClick={() => handleImageDrop(e, image)}>
+                    // className="image-item"
+                    // onClick={() => handleImageDrop(e, image)}
+
+
+                    // onClick={() => currentStep >= 4 || handleImageDrop(e, image)} // Перевірка на currentStep перед викликом handleImageDrop
+                  >
                     <img
                       className="img-listCategory"
                       width={'100px'}
@@ -215,7 +256,9 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
                 ))}
               </div>
               <div
-                className="drop-text"
+                    className={`drop-text ${currentStep < 4 ? 'disabled' : ''}`} // Додано клас "disabled", якщо currentStep менше 4
+
+                // className="drop-text"
                 onDrop={(e) => {
                   e.preventDefault();
                   const image = e.dataTransfer.getData('image');
@@ -224,6 +267,8 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
                     img: image,
                   });
                   setSelectedOption(image); // Оновлення вибраної опції
+
+                  setCurrentStep(4); // Активуємо наступний крок після вибору фото
                 }}
                 onDragOver={(e) => e.preventDefault()}
                 style={{
@@ -253,7 +298,9 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
               variant="outline"
               borderColor={'rgb(255, 180, 41)'}
               color={'rgb(255, 180, 41)'}
-              marginBottom={2}>
+              marginBottom={2}
+              isDisabled={currentStep < 4} // Кнопка додавання в меню активна тільки на кроці 4
+            >
               ДОДАТИ В МЕНЮ
             </Button>
           </Stack>

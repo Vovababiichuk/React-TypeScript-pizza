@@ -119,3 +119,8 @@ input[type=submit] {
   text-transform: uppercase;
   color: rgb(255, 180, 41);
 }
+
+.disabled {
+  pointer-events: none; /* Заборона подій */
+  opacity: 0.6; /* Зменшення прозорості */
+}

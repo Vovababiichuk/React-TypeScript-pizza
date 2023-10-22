@@ -11,6 +11,7 @@ import { Select } from '@chakra-ui/react';
 import { MdArrowDropDown } from 'react-icons/md';
 import { Center, Container } from '@chakra-ui/react';
 
+
 const App: FC = () => {
   const [pizzasList, setPizzasList] = useState<Pizza[]>([]);
 
@@ -34,3 +35,8 @@ const App: FC = () => {
 };
 
 export default App;
+
+
+
+
+//TODO - скачати більші фото для категорії салат
