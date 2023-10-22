@@ -213,6 +213,18 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
     setCurrentStep(4);
   };
 
+
+  const setPrice = (price: string) => {
+    // Якщо ви хочете щось зробити зі значенням ціни, виконайте це тут.
+    // Наприклад, перетворіть рядок у число та збережіть його в стані.
+    // Наприклад, так:
+    setNewPizza({
+      ...newPizza,
+      price: price
+    });
+  };
+  
+
   return (
     <Box
       bgImage={'public/img/bg18.jpg'}
@@ -266,6 +278,8 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
           <div>
             <FormLabel color="rgb(255, 180, 41)">Ціна</FormLabel>
             <Input
+              maxLength={3} // Це обмежить введення користувача трьома символами
+              inputMode="numeric" // Це обмежить введення лише цифрами
               required
               type="number"
               bg="gray.900"
@@ -280,6 +294,18 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
               onBlur={handleBlur}
               placeholder={isFocused ? ' ₴' : 'Встановіть ціну'}
               isDisabled={currentStep < 3} // Поле неактивне, якщо крок менше 3
+
+              onInput={(e) => {
+                // Забороняємо введення символів, які не є цифрами
+                e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
+            
+                // Обмежуємо довжину введеного числа до 3 символів
+                if (e.currentTarget.value.length > 3) {
+                  e.currentTarget.value = e.currentTarget.value.slice(0, 3);
+                }
+            
+                setPrice(e.currentTarget.value);
+              }}
             />
           </div>
           <Center>
@@ -385,20 +411,20 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
         </Stack>
 
         <div>
-            <FormLabel color="rgb(255, 180, 41)">Опис</FormLabel>
-            <Textarea
-              className="select-style"
-              bg="gray.900"
-              borderColor="orange.300"
-              name="description"
-              value={newPizza.description}
-              onChange={handleChange}
-              isDisabled={currentStep < 3}
-              onFocus={handleFocus}
-              onBlur={handleBlur}
-              placeholder="Додайте опис"
-            />
-          </div>
+          <FormLabel color="rgb(255, 180, 41)">Опис</FormLabel>
+          <Textarea
+            className="select-style"
+            bg="gray.900"
+            borderColor="orange.300"
+            name="description"
+            value={newPizza.description}
+            onChange={handleChange}
+            isDisabled={currentStep < 3}
+            onFocus={handleFocus}
+            onBlur={handleBlur}
+            placeholder="Додайте опис"
+          />
+        </div>
 
         <Center>
           <Stack direction="row" spacing={4}>
