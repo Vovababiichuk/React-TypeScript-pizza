@@ -18,6 +18,17 @@ export const theme = extendTheme({
 			800: '#2d3748',
 			900: '#1a202c',
 		},
+
+		darkGreen: {
+      100: '#2E7D32', // Lighter shade of green
+      500: '#004D40', // Dark green (you can adjust the color code)
+    },
+
+		darkRed: {
+			100: '#D32F2F', // Lighter shade of red
+			500: '#B71C1C', // Dark red (you can adjust the color code)
+		},
+
 		fonts: {
 			heading: `'Roboto', sans-serif`,
 			body: `'Roboto', sans-serif`,

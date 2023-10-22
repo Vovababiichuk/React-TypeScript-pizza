@@ -6,6 +6,13 @@ import Pizza from '../../models/Pizza';
 import './styles.css';
 import { color } from 'framer-motion';
 
+
+import { Alert, AlertIcon, AlertTitle, AlertDescription, CloseButton } from '@chakra-ui/react';
+
+
+
+
+
 interface AddPizzaFormProps {
   addPizza: (newPizza: Pizza) => void;
 }
@@ -127,6 +134,24 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
     }
   };
 
+  const [isAlertVisible, setIsAlertVisible] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
+
+  const showSuccessAlert = () => {
+    setIsAlertVisible(true);
+    setTimeout(() => {
+      setIsAlertVisible(false);
+    }, 3000); 
+  };
+
+  const showWarningAlert = () => {
+    setErrorMessage(true);
+    setTimeout(() => {
+      setErrorMessage(false);
+    }, 4000); 
+  };
+
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
@@ -146,8 +171,11 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
       setNewPizza(initState);
       setSelectedOption('');
       setCurrentStep(1); // Після додавання скидаємо крок назад
+      
+      showSuccessAlert();
+
     } else {
-      alert('Будь ласка, заповніть всі поля');
+      showWarningAlert();
     }
   };
 
@@ -160,6 +188,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
   const handleBlur = () => {
     setIsFocused(false);
   };
+
 
   return (
     <Box
@@ -305,6 +334,24 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
             </Button>
           </Stack>
         </Center>
+        {isAlertVisible && (
+          <Alert status="success" colorScheme="darkGreen">
+            <AlertIcon />
+            <Box>
+              <AlertTitle>Успіх!</AlertTitle>
+              <AlertDescription>Товар успішно додано в меню.</AlertDescription>
+            </Box>
+          </Alert>
+        )}
+        {errorMessage && (
+          <Alert status="error" colorScheme="darkRed">
+            <AlertIcon />
+            <Box>
+              <AlertTitle>Помилка!</AlertTitle>
+              <AlertDescription>Заповніть всі поля і виберіть фото</AlertDescription>
+            </Box>
+          </Alert>
+        )}
       </FormControl>
     </Box>
   );
