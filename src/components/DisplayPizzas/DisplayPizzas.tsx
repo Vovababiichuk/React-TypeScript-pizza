@@ -7,7 +7,7 @@ interface DisplayPizzasProps {
 	pizzasList: Pizza[];
 }
 
-const DisplayPizzas: FC<DisplayPizzasProps> = ({ pizzasList }) => {
+export const DisplayPizzas: FC<DisplayPizzasProps> = ({ pizzasList }) => {
 	return (
 		<div className="container">
 			{pizzasList.map((pizza) => {
@@ -16,5 +16,3 @@ const DisplayPizzas: FC<DisplayPizzasProps> = ({ pizzasList }) => {
 		</div>
 	)
 }
-
-export default DisplayPizzas

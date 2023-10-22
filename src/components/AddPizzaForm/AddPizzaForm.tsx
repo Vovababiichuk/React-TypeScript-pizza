@@ -57,8 +57,8 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
       'public/img/salad/1.png',
       'public/img/salad/2.png',
       'public/img/salad/3.png',
-      'public/img/salad/4.jpeg',
-      'public/img/salad/5.jpeg',
+      'public/img/salad/4.png',
+      'public/img/salad/5.png',
     ],
   };
 
@@ -222,9 +222,9 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
               onChange={handleChange}
               isDisabled={currentStep < 1} // Поле неактивне, якщо крок менше 1
             >
+              <option value="option4">🍟 Основні страви</option>
               <option value="option2">🏆 Xіт продажів</option>
               <option value="option3">🍕 Новинки</option>
-              <option value="option4">🍟 Основні страви</option>
               <option value="option5">🥗 Салати</option>
             </Select>
           </div>

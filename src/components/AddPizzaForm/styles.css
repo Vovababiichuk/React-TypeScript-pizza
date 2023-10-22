@@ -105,7 +105,7 @@ input[type=submit] {
 
   border-radius: 10px;
   /* margin: 10px; */
-  border: 1px solid #000;
+  /* border: 1px solid #000; */
   cursor: grab;
 
 }

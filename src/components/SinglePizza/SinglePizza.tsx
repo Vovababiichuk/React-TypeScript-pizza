@@ -11,8 +11,8 @@ interface SinglePizzaProps {
 export const SinglePizza: FC<SinglePizzaProps> = ({ pizza }) => {
 	return (
 		<div className="pizza">
-
-			<img src={`./img/${pizza.img}`} alt={pizza.title} />
+			<span>{pizza.category}</span>
+			<img src={`${pizza.img}`} alt={pizza.title} />
 			<h2>{pizza.title}</h2>
 			<span>{pizza.price}₴</span>
 
