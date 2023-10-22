@@ -407,7 +407,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
         </Stack>
 
         <div>
-          <FormLabel color="rgb(255, 180, 41)">Опис</FormLabel>
+          {/* <FormLabel color="rgb(255, 180, 41)">Опис</FormLabel> */}
           <Textarea
             className="select-style"
             bg="gray.900"

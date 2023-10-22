@@ -124,3 +124,7 @@ input[type=submit] {
   pointer-events: none; /* Заборона подій */
   opacity: 0.6; /* Зменшення прозорості */
 }
+
+textarea {
+  margin-bottom: 20px;
+}
