@@ -4,11 +4,8 @@ import { Button, Center } from '@chakra-ui/react';
 import { AddIcon } from '@chakra-ui/icons';
 import Pizza from '../../models/Pizza';
 import './styles.css';
-
 import { Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react';
-
 import { DefaultImageList, MobileImageList } from './stylePizzaComponent';
-
 import { Textarea } from '@chakra-ui/react';
 
 interface AddPizzaFormProps {
@@ -212,7 +209,6 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
     setSelectedOption(image);
     setCurrentStep(4);
   };
-
 
   const setPrice = (price: string) => {
     // Якщо ви хочете щось зробити зі значенням ціни, виконайте це тут.
