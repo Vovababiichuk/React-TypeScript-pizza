@@ -7,12 +7,17 @@ import { Box, Center } from '@chakra-ui/react';
 import { AddPizzaForm } from './components/AddPizzaForm/AddPizzaForm';
 import './App.css';
 import { Flex } from '@chakra-ui/react';
+import { motion } from 'framer-motion';
 
 const App: FC = () => {
   const [pizzasList, setPizzasList] = useState<Pizza[]>([]);
 
   const addPizza = (newPizza: Pizza) => {
     setPizzasList([...pizzasList, newPizza]);
+  };
+
+  const containerStyle = {
+    overflow: 'hidden',
   };
 
   return (
@@ -23,65 +28,82 @@ const App: FC = () => {
         <Route
           path="/"
           element={
-            <Wrapper>
-              <span className="heading">Формування Меню</span>
+            <Wrapper style={containerStyle}>
+              <motion.div
+                initial={{ opacity: 0, y: -300 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 4.0 }}>
+                <span className="heading">Формування Меню</span>
+              </motion.div>
               <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
-                <AddPizzaForm addPizza={addPizza} />
+                <motion.div
+                  initial={{ opacity: 0, y: 800 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 2.6 }}
+                >
+                  <AddPizzaForm addPizza={addPizza} />
+                </motion.div>
                 <div className="link-wrapper-content">
-                  <div className="link-wrapper">
-                    <div className="link-svg">
-                      <Link to="/all-products">
-                        <div className="wrap-content">
-                          <div className="shadow">
-                            <div className="blob">
-                              <div className="data">
-                                <img src="../public/img/link/link1.png" alt="" />
+                  <motion.div>
+                    <div className="link-wrapper">
+                      <div className="link-svg">
+                        <Link to="/all-products">
+                          <div className="wrap-content">
+                            <div className="shadow">
+                              <div className="blob">
+                                <div className="data">
+                                  <img src="../public/img/link/link1.png" alt="" />
+                                </div>
                               </div>
                             </div>
-                          </div>
-                          <div className="title">
-                            <span className="text">Меню</span>
-                          </div>
-                        </div>
-                      </Link>
-                    </div>
-                  </div>
-                  <div className="link-wrapper-link2">
-                    <div className="link-svg">
-                      <Link to="/all-products">
-                        <div className="wrap-content">
-                          <div className="shadow">
-                            <div className="blob">
-                              <div className="data">
-                                <img src="../public/img/link/link2.png" alt="" />
-                              </div>
+                            <div className="title">
+                              <span className="text">Меню</span>
                             </div>
                           </div>
-                          <div className="title">
-                            <span className="text">Меню</span>
-                          </div>
-                        </div>
-                      </Link>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
-                  <div className="link-wrapper-link3">
-                    <div className="link-svg">
-                      <Link to="/all-products">
-                        <div className="wrap-content">
-                          <div className="shadow">
-                            <div className="blob">
-                              <div className="data">
-                                <img src="../public/img/link/link2.png" alt="" />
+                  </motion.div>
+                  <motion.div>
+                    <div className="link-wrapper-link2">
+                      <div className="link-svg">
+                        <Link to="/all-products">
+                          <div className="wrap-content">
+                            <div className="shadow">
+                              <div className="blob">
+                                <div className="data">
+                                  <img src="../public/img/link/link2.png" alt="" />
+                                </div>
                               </div>
                             </div>
+                            <div className="title">
+                              <span className="text">Меню</span>
+                            </div>
                           </div>
-                          <div className="title">
-                            <span className="text">Меню</span>
-                          </div>
-                        </div>
-                      </Link>
+                        </Link>
+                      </div>
                     </div>
-                  </div>
+                  </motion.div>
+                  <motion.div>
+                    <div className="link-wrapper-link3">
+                      <div className="link-svg">
+                        <Link to="/all-products">
+                          <div className="wrap-content">
+                            <div className="shadow">
+                              <div className="blob">
+                                <div className="data">
+                                  <img src="../public/img/link/link2.png" alt="" />
+                                </div>
+                              </div>
+                            </div>
+                            <div className="title">
+                              <span className="text">Меню</span>
+                            </div>
+                          </div>
+                        </Link>
+                      </div>
+                    </div>
+                  </motion.div>
                 </div>
               </Flex>
             </Wrapper>
