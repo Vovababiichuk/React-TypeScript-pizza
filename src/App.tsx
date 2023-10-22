@@ -32,19 +32,25 @@ const App: FC = () => {
               <motion.div
                 initial={{ opacity: 0, y: -300 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 4.0 }}>
+                transition={{ duration: 3.0 }}>
                 <span className="heading">Формування Меню</span>
               </motion.div>
               <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
                 <motion.div
                   initial={{ opacity: 0, y: 800 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 2.6 }}
-                >
+                  transition={{ duration: 2.2 }}>
                   <AddPizzaForm addPizza={addPizza} />
                 </motion.div>
                 <div className="link-wrapper-content">
-                  <motion.div>
+                  <motion.div
+                  initial={{ opacity: 0, x: 900 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    // opacity: { duration: 1.0, delay: 0.5 }, // Затримка 0.5 секунди та тривалість 1 секунда для прозорості
+                    x: { duration: 0.8, delay: 2.7 }, // Затримка 0.2 секунди та тривалість 0.8 секунди для зміщення по осі Y
+                  }}
+                  >
                     <div className="link-wrapper">
                       <div className="link-svg">
                         <Link to="/all-products">
@@ -64,7 +70,14 @@ const App: FC = () => {
                       </div>
                     </div>
                   </motion.div>
-                  <motion.div>
+                  <motion.div
+                  initial={{ opacity: 0, x: 900 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{
+                    // opacity: { duration: 1.0, delay: 0.5 }, // Затримка 0.5 секунди та тривалість 1 секунда для прозорості
+                    x: { duration: 0.8, delay: 2.6 }, // Затримка 0.2 секунди та тривалість 0.8 секунди для зміщення по осі Y
+                  }}
+                  >
                     <div className="link-wrapper-link2">
                       <div className="link-svg">
                         <Link to="/all-products">
@@ -84,7 +97,14 @@ const App: FC = () => {
                       </div>
                     </div>
                   </motion.div>
-                  <motion.div>
+                  <motion.div
+                    initial={{ opacity: 0, x: 900 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{
+                      // opacity: { duration: 1.0, delay: 0.5 }, // Затримка 0.5 секунди та тривалість 1 секунда для прозорості
+                      x: { duration: 0.8, delay: 2.5 }, // Затримка 0.2 секунди та тривалість 0.8 секунди для зміщення по осі Y
+                    }}
+                    >
                     <div className="link-wrapper-link3">
                       <div className="link-svg">
                         <Link to="/all-products">
