@@ -3,6 +3,7 @@ type Pizza = {
 	title: string,
 	price: number,
 	img: string,
+	category: string,
 }
 
 export default Pizza
