@@ -40,6 +40,7 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
   return (
     <Wrapper>
       <Container maxW="1300px" centerContent>
+      <span className="heading">Меню</span>
         <Grid templateColumns="repeat(5, 1fr)" gap={4}>
           {pizzasList.map((pizza) => (
             <Card maxW="sm" key={pizza.id}>
