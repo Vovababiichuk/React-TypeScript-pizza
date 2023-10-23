@@ -9,6 +9,8 @@ interface DisplayPizzasProps {
 }
 
 export const DisplayPizzas: FC<DisplayPizzasProps> = ({ pizzasList }) => {
+ console.log(pizzasList);
+
   return (
     <div>
       {pizzasList.map((pizza) => (

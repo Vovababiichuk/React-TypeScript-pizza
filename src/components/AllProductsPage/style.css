@@ -2,5 +2,55 @@
   max-height: 3em; /* Максимальна висота: еквівалентно трьом рядкам тексту */
   overflow: hidden; /* Приховує зайвий текст, який не вміщується */
   text-overflow: ellipsis; /* Додає мініатюрну "..." в кінці обрізаного тексту */
-  white-space: nowrap; Перемикає текст в один рядок, не переносячи його
+  white-space: nowrap; /* Перемикає текст в один рядок, не переносячи його */
+}
+
+
+.heading--space {
+  margin-bottom: 10px;
+}
+
+.link-back {
+  text-decoration: none;
+  color: #fff;
+  position: fixed;
+  left: 50px;
+  top: 28px;
+  transition: color 0.2s ease-in-out;
+}
+
+.link-back:hover {
+  color: rgb(255, 180, 41);
+}
+
+.link-back  span {
+  display: inline-flex;
+  font-size: 24px;
+  color: #8c8c8c;
+}
+
+.heading-wrap {
+  display: flex;
+  align-items: center;
+}
+
+.link-menu-back {
+  position: fixed;
+  left: 1400px;
+  top: 50px;
+}
+
+.no-products {
+  font-size: 36px;
+  position: fixed;
+  top: 440px;
+  left: 700px;
+}
+
+.no-products-title {
+  /* display: flex;
+  align-items: center;
+  gap: 20px; */
+  font-size: 100px;
+  color: #595959;
 }

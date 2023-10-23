@@ -59,7 +59,7 @@ export const Blob = styled.div`
 export const Data = styled.div`
   place-items: center;
 `
-export const ImgLinkApp = styled.div`
+export const ImgLinkApp = styled.img`
   width: 60px;
   height: auto;
 `
@@ -72,7 +72,7 @@ export const Title = styled.div`
   padding-top: 6px;
 `
 export const Text = styled.span`
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 300;
   line-height: 1.1;
   width: 120px;
