@@ -40,14 +40,14 @@ const App: FC = () => {
               <motion.div
                 initial={{ opacity: 0, y: -300 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 2.5 }}>
+                transition={{ duration: 2.0 }}>
                 <span className="heading">Формування Меню</span>
               </motion.div>
               <Flex justifyContent="center" alignItems="center" flexWrap="wrap">
                 <motion.div
                   initial={{ opacity: 0, y: 800 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 2.0 }}>
+                  transition={{ duration: 1.5 }}>
                   <AddPizzaForm addPizza={addPizza} />
                 </motion.div>
 
@@ -57,7 +57,7 @@ const App: FC = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
                       // opacity: { duration: 1.0, delay: 0.5 }, // Затримка 0.5 секунди та тривалість 1 секунда для прозорості
-                      x: { duration: 0.8, delay: 2.7 }, // Затримка 0.2 секунди та тривалість 0.8 секунди для зміщення по осі Y
+                      x: { duration: 0.8, delay: 2.0 }, // Затримка 0.2 секунди та тривалість 0.8 секунди для зміщення по осі Y
                     }}>
                     <div className="link-wrapper">
                       <div className="link-svg">
@@ -87,7 +87,7 @@ const App: FC = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
                       // opacity: { duration: 1.0, delay: 0.5 }, // Затримка 0.5 секунди та тривалість 1 секунда для прозорості
-                      x: { duration: 0.8, delay: 2.5 }, // Затримка 0.2 секунди та тривалість 0.8 секунди для зміщення по осі Y
+                      x: { duration: 0.8, delay: 1.9 }, // Затримка 0.2 секунди та тривалість 0.8 секунди для зміщення по осі Y
                     }}>
                     <Popover>
                       <PopoverTrigger>
@@ -130,7 +130,7 @@ const App: FC = () => {
                     animate={{ opacity: 1, x: 0 }}
                     transition={{
                       // opacity: { duration: 1.0, delay: 0.5 }, // Затримка 0.5 секунди та тривалість 1 секунда для прозорості
-                      x: { duration: 0.8, delay: 2.3 }, // Затримка 0.2 секунди та тривалість 0.8 секунди для зміщення по осі Y
+                      x: { duration: 0.8, delay: 1.8 }, // Затримка 0.2 секунди та тривалість 0.8 секунди для зміщення по осі Y
                     }}>
                     <Popover>
                       <PopoverTrigger>

@@ -225,6 +225,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
     <Box
       bgImage={'public/img/bg-cut.jpg'}
       backgroundSize={'cover'}
+      backgroundPosition={'center'}
       borderRadius="lg"
       w="600px"
       p={4}
