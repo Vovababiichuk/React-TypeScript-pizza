@@ -8,6 +8,8 @@ import { Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react
 import { DefaultImageList, MobileImageList } from './stylePizzaComponent';
 import { Textarea } from '@chakra-ui/react';
 
+import { BoxMyContainer } from './stylePizzaComponent';
+
 interface AddPizzaFormProps {
   addPizza: (newPizza: Pizza) => void;
 }
@@ -216,21 +218,22 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
     // Наприклад, так:
     setNewPizza({
       ...newPizza,
-      price: price
+      price: price,
     });
   };
-  
 
   return (
-    <Box
-      bgImage={'public/img/bg-cut.jpg'}
-      backgroundSize={'cover'}
-      backgroundPosition={'center'}
-      borderRadius="lg"
-      w="600px"
-      p={4}
-      color="white"
-      border="1px solid orange.300">
+    <BoxMyContainer
+      // className="box-form"
+      // bgImage={'public/img/bg-cut.jpg'}
+      // backgroundSize={'cover'}
+      // backgroundPosition={'center'}
+      // borderRadius="lg"
+      // w="600px"
+      // p={4}
+      // color="white"
+      // border="1px solid orange.300"
+      >
       <FormControl>
         <Stack marginBottom={5} spacing={3}>
           <div>
@@ -291,16 +294,15 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
               onBlur={handleBlur}
               placeholder={isFocused ? ' ₴' : 'Встановіть ціну'}
               isDisabled={currentStep < 3} // Поле неактивне, якщо крок менше 3
-
               onInput={(e) => {
                 // Забороняємо введення символів, які не є цифрами
                 e.currentTarget.value = e.currentTarget.value.replace(/[^0-9]/g, '');
-            
+
                 // Обмежуємо довжину введеного числа до 3 символів
                 if (e.currentTarget.value.length > 3) {
                   e.currentTarget.value = e.currentTarget.value.slice(0, 3);
                 }
-            
+
                 setPrice(e.currentTarget.value);
               }}
             />
@@ -315,9 +317,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
                     <div
                       key={index}
                       draggable
-                      onDragStart={(e) => e.dataTransfer.setData('image', image)}
-                  
-                      >
+                      onDragStart={(e) => e.dataTransfer.setData('image', image)}>
                       <img
                         className="img-listCategory"
                         width={'100px'}
@@ -325,7 +325,6 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
                         src={image}
                         alt={`Фото ${index}`}
                       />
-                      
                     </div>
                   ))}
                 </div>
@@ -461,6 +460,6 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
           </Alert>
         )}
       </FormControl>
-    </Box>
+    </BoxMyContainer>
   );
 };

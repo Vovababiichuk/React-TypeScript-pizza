@@ -1,3 +1,5 @@
+
+
 .description {
   max-height: 3em; /* Максимальна висота: еквівалентно трьом рядкам тексту */
   overflow: hidden; /* Приховує зайвий текст, який не вміщується */
@@ -5,6 +7,16 @@
   white-space: nowrap; /* Перемикає текст в один рядок, не переносячи його */
 }
 
+.heading-cards {
+  text-align: center;
+  display: block;
+  padding: 20px 0 20px 0;
+  color: #fff;
+  font-size: 26px;
+  color: rgb(255, 180, 41);
+  /* color: #2d6271; */
+  text-transform: uppercase;
+}
 
 .heading--space {
   margin-bottom: 10px;
@@ -73,10 +85,16 @@
   }
 }
 
-@media (max-width: 900px) {
+@media (max-width: 600px) {
   .grid-test {
     grid-template-columns: repeat(1, 1fr);
   }
+}
+
+@media (max-width: 400px) {
+ .link-cards {
+   flex-direction: column;
+ }
 }
 
 .button-card {

@@ -3,6 +3,7 @@
 * {
   box-sizing: border-box;
   /* background-color: #1a1a1a; */
+  
 }
 
 /* .App {
@@ -10,6 +11,8 @@
   min-height: 100vh;
   font-family: "Montserrat";
 } */
+
+
 
 
 
@@ -24,16 +27,55 @@
   text-transform: uppercase;
 }
 
-.link-wrapper-content {
+.link-wrap-main {
+  /* display: flex; */
+  /* justify-content: center; */
   position: relative;
+  width: 100%;
+  display: block;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.link-wrapper-form {
+}
+
+.link-wrapper-content {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  padding-top: 50px;
+
+  position: absolute;
+  top: 0%;
+  left: 70%;
+  /* transform: translate(-50%, -50%); */
+}
+
+@media (max-width: 1235px) {
+  .link-wrapper-content {
+    left: 75%;
+  }
+}
+
+@media (max-width: 1050px) {
+  .link-wrapper-content {
+    left: 80%;
+  }
+}
+
+@media (max-width: 872px) {
+  .link-wrapper-content {
+    display: none;
+  }
 }
 
 .link-wrapper {
-  transition: scale 0.2s ease-in-out;
+  /* transition: scale 0.2s ease-in-out;
   content: ''; 
   position: absolute;
   top: -240px;
-  right: -200px;
+  right: -200px; */
 }
 
 .link-wrapper:hover,
@@ -43,19 +85,19 @@
 }
 
 .link-wrapper-link2 {
-  transition: scale 0.2s ease-in-out;
+  /* transition: scale 0.2s ease-in-out;
   content: ''; 
   position: absolute;
   top: -80px;
-  right: -200px;
+  right: -200px; */
 }
 
 .link-wrapper-link3 {
-  transition: scale 0.2s ease-in-out;
+  /* transition: scale 0.2s ease-in-out;
   content: '';
   position: absolute;
   top: 80px;
-  right: -200px;
+  right: -200px; */
 }
 
 
@@ -78,7 +120,7 @@
 
 .shadow {
   align-items: center;
-  background: rgba(225,159,23,.5);
+  background: rgba(225, 159, 23, .5);
   border-radius: 49% 51% 52% 48%/58% 47% 53% 42%;
   border-radius: 46% 54% 54% 46%/58% 56% 44% 42%;
   display: flex;
@@ -127,5 +169,32 @@
   width: 200px;
   display: block;
   text-transform: uppercase;
+}
+
+.heading-arrow {
+  font-size: 24px;
+  color: #ababab;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 10px;
+  gap: 20px;
+  display: none;
+}
+
+.link-foward {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+@media (max-width: 872px) {
+  .heading-arrow {
+    display: flex;
+  }
+
+  .heading {
+    padding-top: 0;
+  }
 }
 

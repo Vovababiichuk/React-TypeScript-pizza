@@ -73,7 +73,7 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
               <FaBackward />
             </span>
           </Link>
-          <span className="heading heading--space">Меню</span>
+          <span className="heading-cards heading--space">Меню</span>
         </div>
         <Grid className="grid-test">
           {pizzasList.length === 0 ? (
@@ -129,7 +129,7 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
         </Grid>
       </Container>
       <Box>
-        <Flex gap={'30px'} justifyContent={'center'} alignItems={'center'}>
+        <Flex className='link-cards' gap={'30px'} justifyContent={'center'} alignItems={'center'}>
           <LinkMenu to="/" imgSrc="../../../public/img/link/link10.png" text="Формування Меню" />
           <LinkMenu
             to="#"
