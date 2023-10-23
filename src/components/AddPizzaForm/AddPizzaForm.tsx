@@ -314,7 +314,9 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
                     <div
                       key={index}
                       draggable
-                      onDragStart={(e) => e.dataTransfer.setData('image', image)}>
+                      onDragStart={(e) => e.dataTransfer.setData('image', image)}
+                  
+                      >
                       <img
                         className="img-listCategory"
                         width={'100px'}
@@ -322,6 +324,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
                         src={image}
                         alt={`Фото ${index}`}
                       />
+                      
                     </div>
                   ))}
                 </div>
