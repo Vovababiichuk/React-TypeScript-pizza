@@ -5,7 +5,6 @@ import { AllProductsPage } from './components/AllProductsPage/AllProductsPage';
 import { Wrapper } from './components/Wrapper/Wrapper';
 import { AddPizzaForm } from './components/AddPizzaForm/AddPizzaForm';
 import './App.css';
-import { Flex } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import {
   Popover,
