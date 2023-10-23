@@ -39,11 +39,21 @@
   display: inline-flex;
   font-size: 24px;
   color: #8c8c8c;
+  transition: color 0.2s ease-in-out;
+}
+
+.link-back  span:hover {
+  color: rgb(255, 180, 41);
 }
 
 .heading-wrap {
   display: flex;
   align-items: center;
+}
+
+.arrow-hover:hover {
+  color: rgb(255, 180, 41);
+  cursor: pointer;
 }
 
 .link-menu-back {
@@ -65,6 +75,11 @@
   gap: 20px; */
   font-size: 80px;
   color: #595959;
+  transition: color 0.2s ease-in-out;
+}
+
+.no-products-title:hover {
+  color: rgb(255, 180, 41);
 }
 
 .grid-test {

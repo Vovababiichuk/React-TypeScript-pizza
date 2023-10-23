@@ -14,6 +14,7 @@ import {
   CardFooter,
   ButtonGroup,
   Button,
+  LinkBox,
 } from '@chakra-ui/react';
 
 import { Grid, Container, GridItem } from '@chakra-ui/react';
@@ -58,14 +59,14 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
     <Wrapper>
       <Container maxW="1300px" centerContent marginBottom={'30px'}>
         <div className="heading-wrap">
-          <Link className="link-back" to="/" imgSrc="../../../public/img/link/link10.png">
-            <span>
-              <FaBackward />
-            </span>
-            <span>
-              <FaBackward />
-            </span>
-          </Link>
+          <div className='arrow-hover'>
+            <Link className="link-back" to="/" imgSrc="../../../public/img/link/link10.png">
+                <span>
+                  <FaBackward />
+                  <FaBackward />
+                </span>
+            </Link>
+          </div>
           <span className="heading-cards heading--space">Меню</span>
         </div>
         <Grid className="grid-test">
@@ -81,45 +82,51 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
             </strong>
           ) : (
             pizzasList.map((pizza) => (
-              <Card maxW="sm" key={pizza.id}>
-                <CardBody padding={4}>
-                  <Image src={pizza.img} alt={pizza.title} borderRadius="lg" />
-                  <Stack mt="6" spacing="3">
-                    <Heading size="md">{pizza.title}</Heading>
-                    <Badge
-                      ml="0"
-                      fontSize="12px"
-                      colorScheme="cyan"
-                      borderRadius={'50px'}
-                      width={'fit-content'}
-                      padding={'4px 10px'}>
-                      {categoryToBadge[pizza.category]}
-                    </Badge>
-                    <Text className="description">{pizza.description}</Text>
-                    <Badge variant='outline' colorScheme="orange" width={'fit-content'} borderRadius={'4px'}>
-                      <Text>{formatUADateTime(new Date(pizza.created))}</Text>
-                    </Badge>
-                    <Text color="orange" fontSize="2xl">
-                      {pizza.price.toFixed(2)} UAH
-                    </Text>
-                  </Stack>
-                </CardBody>
-                <Divider />
-                <CardFooter>
-                  <ButtonGroup className="button-card">
-                    <Button variant="solid" colorScheme="orange">
-                      Купити
-                    </Button>
-                    <Button
-                      variant="outline"
-                      colorScheme="orange"
-                      fontSize={'26px'}
-                      color={'orange'}>
-                      <BsFillCartPlusFill />
-                    </Button>
-                  </ButtonGroup>
-                </CardFooter>
-              </Card>
+              <LinkBox>
+                <Card maxW="sm" key={pizza.id}>
+                  <CardBody padding={4}>
+                    <Image src={pizza.img} alt={pizza.title} borderRadius="lg" />
+                    <Stack mt="6" spacing="3">
+                      <Heading size="md">{pizza.title}</Heading>
+                      <Badge
+                        ml="0"
+                        fontSize="12px"
+                        colorScheme="cyan"
+                        borderRadius={'50px'}
+                        width={'fit-content'}
+                        padding={'4px 10px'}>
+                        {categoryToBadge[pizza.category]}
+                      </Badge>
+                      <Text className="description">{pizza.description}</Text>
+                      <Badge
+                        variant="outline"
+                        colorScheme="gray"
+                        width={'fit-content'}
+                        borderRadius={'4px'}>
+                        <Text>{formatUADateTime(new Date(pizza.created))}</Text>
+                      </Badge>
+                      <Text color="orange" fontSize="2xl">
+                        {pizza.price.toFixed(2)} UAH
+                      </Text>
+                    </Stack>
+                  </CardBody>
+                  <Divider />
+                  <CardFooter>
+                    <ButtonGroup className="button-card">
+                      <Button variant="solid" colorScheme="orange">
+                        Купити
+                      </Button>
+                      <Button
+                        variant="outline"
+                        colorScheme="orange"
+                        fontSize={'26px'}
+                        color={'orange'}>
+                        <BsFillCartPlusFill />
+                      </Button>
+                    </ButtonGroup>
+                  </CardFooter>
+                </Card>
+              </LinkBox>
             ))
           )}
         </Grid>
