@@ -51,6 +51,37 @@
   /* display: flex;
   align-items: center;
   gap: 20px; */
-  font-size: 100px;
+  font-size: 80px;
   color: #595959;
+}
+
+.grid-test {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+@media (max-width: 1100px) {
+  .grid-test {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .grid-test {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 900px) {
+  .grid-test {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+
+.button-card {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

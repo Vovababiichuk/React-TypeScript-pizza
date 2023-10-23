@@ -16,7 +16,7 @@ import {
   Button,
 } from '@chakra-ui/react';
 
-import { Grid, Container } from '@chakra-ui/react';
+import { Grid, Container, GridItem } from '@chakra-ui/react';
 
 // import { CustomCard } from './AllProductsPageElements';
 
@@ -29,6 +29,9 @@ import { FaBackward } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 
 import { BsPlusCircleFill } from 'react-icons/bs';
+import { useState } from 'react';
+
+import { GridContainer } from './AllProductsPageElements';
 
 interface AllProductsPageProps {
   pizzasList: Pizza[];
@@ -56,6 +59,8 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
     option5: 'Салати',
   };
 
+  const [edit, setEdit] = useState<boolean>(false);
+
   return (
     <Wrapper>
       <Container maxW="1300px" centerContent marginBottom={'30px'}>
@@ -70,11 +75,11 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
           </Link>
           <span className="heading heading--space">Меню</span>
         </div>
-        <Grid templateColumns="repeat(4, 1fr)" gap={4}>
+        <Grid className="grid-test">
           {pizzasList.length === 0 ? (
             <strong className="no-products">
               <div className="no-products-title">
-                <Link to="/" imgSrc="../../../public/img/link/link10.png">
+                <Link to="/">
                   <span>
                     <BsPlusCircleFill />
                   </span>
@@ -105,7 +110,7 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
                 </CardBody>
                 <Divider />
                 <CardFooter>
-                  <ButtonGroup spacing="2" display={'flex'} gap={'100px'}>
+                  <ButtonGroup className='button-card'>
                     <Button variant="solid" colorScheme="orange">
                       Купити
                     </Button>
