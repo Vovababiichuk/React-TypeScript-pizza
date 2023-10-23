@@ -17,30 +17,21 @@ import {
 } from '@chakra-ui/react';
 
 import { Grid, Container, GridItem } from '@chakra-ui/react';
-
-// import { CustomCard } from './AllProductsPageElements';
-
 import { BsFillCartPlusFill } from 'react-icons/bs';
-
 import { Badge } from '@chakra-ui/react';
-
 import { FaBackward } from 'react-icons/fa';
-
 import { Link } from 'react-router-dom';
-
 import { BsPlusCircleFill } from 'react-icons/bs';
 import { useState } from 'react';
-
-import { GridContainer } from './AllProductsPageElements';
 
 interface AllProductsPageProps {
   pizzasList: Pizza[];
 }
 
-const formatUADateTime = (date) => {
+const formatUADateTime = (date: Date) => {
   const options = {
     year: 'numeric',
-    month: 'numeric',
+    month: 'long',
     day: 'numeric',
     hour: 'numeric',
     minute: 'numeric',
@@ -48,6 +39,8 @@ const formatUADateTime = (date) => {
   };
   return new Intl.DateTimeFormat('uk-UA', options).format(date);
 };
+
+console.log(formatUADateTime());
 
 export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) => {
   console.log(pizzasList);
@@ -103,6 +96,9 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
                       {categoryToBadge[pizza.category]}
                     </Badge>
                     <Text className="description">{pizza.description}</Text>
+                    <Badge variant='outline' colorScheme="orange" width={'fit-content'} borderRadius={'4px'}>
+                      <Text>{formatUADateTime(new Date(pizza.created))}</Text>
+                    </Badge>
                     <Text color="orange" fontSize="2xl">
                       {pizza.price.toFixed(2)} UAH
                     </Text>
@@ -110,7 +106,7 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
                 </CardBody>
                 <Divider />
                 <CardFooter>
-                  <ButtonGroup className='button-card'>
+                  <ButtonGroup className="button-card">
                     <Button variant="solid" colorScheme="orange">
                       Купити
                     </Button>
@@ -129,7 +125,7 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
         </Grid>
       </Container>
       <Box>
-        <Flex className='link-cards' gap={'30px'} justifyContent={'center'} alignItems={'center'}>
+        <Flex className="link-cards" gap={'30px'} justifyContent={'center'} alignItems={'center'}>
           <LinkMenu to="/" imgSrc="../../../public/img/link/link10.png" text="Формування Меню" />
           <LinkMenu
             to="#"

@@ -123,7 +123,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
   const handleChange = (
     e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>,
   ) => {
-    const { name, value } = e.target;
+    const { name, value } = e.target as HTMLInputElement;
 
     setNewPizza({
       ...newPizza,
