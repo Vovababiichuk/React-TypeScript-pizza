@@ -2,6 +2,11 @@ import { Wrapper } from '../Wrapper/Wrapper';
 import './style.css';
 import { LinkMenu } from '../LinkMenu/LinkMenu';
 import { Box, Flex } from '@chakra-ui/react';
+import { PizzaModal } from '../PizzaModal/PizzaModal';
+import Pizza from '../../models/Pizza';
+import { TiInfoLargeOutline } from 'react-icons/ti';
+import { AiTwotoneEdit } from 'react-icons/ai';
+import { MdDelete } from 'react-icons/md';
 
 import {
   Card,
@@ -14,10 +19,11 @@ import {
   CardFooter,
   ButtonGroup,
   Button,
-  LinkBox,
 } from '@chakra-ui/react';
 
-import { Grid, Container, GridItem } from '@chakra-ui/react';
+import { useDisclosure } from '@chakra-ui/react';
+
+import { Grid, Container } from '@chakra-ui/react';
 import { BsFillCartPlusFill } from 'react-icons/bs';
 import { Badge } from '@chakra-ui/react';
 import { FaBackward } from 'react-icons/fa';
@@ -46,6 +52,14 @@ console.log(formatUADateTime());
 export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) => {
   console.log(pizzasList);
 
+  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [selectedPizza, setSelectedPizza] = useState<Pizza | null>(null);
+
+  const openModalWithPizza = (pizza: Pizza) => {
+    setSelectedPizza(pizza);
+    onOpen();
+  };
+
   const categoryToBadge: Record<string, string> = {
     option4: 'Основні страви',
     option2: 'Xіт продажів',
@@ -53,18 +67,18 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
     option5: 'Салати',
   };
 
-  const [edit, setEdit] = useState<boolean>(false);
+  // const [edit, setEdit] = useState<boolean>(false);
 
   return (
     <Wrapper>
       <Container maxW="1300px" centerContent marginBottom={'30px'}>
         <div className="heading-wrap">
-          <div className='arrow-hover'>
+          <div className="arrow-hover">
             <Link className="link-back" to="/" imgSrc="../../../public/img/link/link10.png">
-                <span>
-                  <FaBackward />
-                  <FaBackward />
-                </span>
+              <span>
+                <FaBackward />
+                <FaBackward />
+              </span>
             </Link>
           </div>
           <span className="heading-cards heading--space">Меню</span>
@@ -82,51 +96,70 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
             </strong>
           ) : (
             pizzasList.map((pizza) => (
-              <LinkBox>
-                <Card maxW="sm" key={pizza.id}>
-                  <CardBody padding={4}>
-                    <Image src={pizza.img} alt={pizza.title} borderRadius="lg" />
-                    <Stack mt="6" spacing="3">
-                      <Heading size="md">{pizza.title}</Heading>
-                      <Badge
-                        ml="0"
-                        fontSize="12px"
-                        colorScheme="cyan"
-                        borderRadius={'50px'}
-                        width={'fit-content'}
-                        padding={'4px 10px'}>
-                        {categoryToBadge[pizza.category]}
-                      </Badge>
-                      <Text className="description">{pizza.description}</Text>
-                      <Badge
-                        variant="outline"
-                        colorScheme="gray"
-                        width={'fit-content'}
-                        borderRadius={'4px'}>
-                        <Text>{formatUADateTime(new Date(pizza.created))}</Text>
-                      </Badge>
-                      <Text color="orange" fontSize="2xl">
-                        {pizza.price.toFixed(2)} UAH
-                      </Text>
-                    </Stack>
-                  </CardBody>
-                  <Divider />
-                  <CardFooter>
-                    <ButtonGroup className="button-card">
-                      <Button variant="solid" colorScheme="orange">
-                        Купити
-                      </Button>
-                      <Button
-                        variant="outline"
-                        colorScheme="orange"
-                        fontSize={'26px'}
-                        color={'orange'}>
-                        <BsFillCartPlusFill />
-                      </Button>
-                    </ButtonGroup>
-                  </CardFooter>
-                </Card>
-              </LinkBox>
+              <Card className="card-hover" maxW="sm" key={pizza.id}>
+                <CardBody onClick={() => openModalWithPizza(pizza)} padding={4}>
+                  <Image src={pizza.img} alt={pizza.title} borderRadius="lg" />
+                  <Stack mt="6" spacing="3">
+                    <Heading size="md">{pizza.title}</Heading>
+                    <div className="category-wrap">
+                      <span>
+                        <Badge
+                          ml="0"
+                          fontSize="12px"
+                          colorScheme="cyan"
+                          borderRadius={'50px'}
+                          width={'fit-content'}
+                          padding={'4px 10px'}>
+                          {categoryToBadge[pizza.category]}
+                        </Badge>
+                      </span>
+                      <span className="info-icon info-icon--info">
+                        <TiInfoLargeOutline />
+                      </span>
+                    </div>
+                    <Text className="description">{pizza.description}</Text>
+                    <div className="date-badge">
+                      <span>
+                        <Badge
+                          variant="outline"
+                          colorScheme="gray"
+                          width={'fit-content'}
+                          borderRadius={'4px'}>
+                          <Text>{formatUADateTime(new Date(pizza.created))}</Text>
+                        </Badge>
+                      </span>
+                      <span className="info-icon info-icon--edit">
+                        <AiTwotoneEdit />
+                      </span>
+                    </div>
+                    <div className='price-wrap'>
+                      <span>
+                        <Text color="orange" fontSize="2xl">
+                          {pizza.price.toFixed(2)} UAH
+                        </Text>
+                      </span>
+                      <span className="info-icon info-icon--delete">
+                        <MdDelete />
+                      </span>
+                    </div>
+                  </Stack>
+                </CardBody>
+                <Divider />
+                <CardFooter>
+                  <ButtonGroup className="button-card">
+                    <Button variant="solid" colorScheme="orange">
+                      Купити
+                    </Button>
+                    <Button
+                      variant="outline"
+                      colorScheme="orange"
+                      fontSize={'26px'}
+                      color={'orange'}>
+                      <BsFillCartPlusFill />
+                    </Button>
+                  </ButtonGroup>
+                </CardFooter>
+              </Card>
             ))
           )}
         </Grid>
@@ -142,17 +175,9 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
           <LinkMenu to="#" imgSrc="../../../public/img/link/link11.png" text="Кур'єр" />
         </Flex>
       </Box>
+      <PizzaModal isOpen={isOpen} onClose={onClose} pizza={selectedPizza} />
     </Wrapper>
   );
-};
-
-type Pizza = {
-  id: number;
-  title: string;
-  price: number;
-  img: string;
-  category: string;
-  description: string;
 };
 
 export default AllProductsPage;

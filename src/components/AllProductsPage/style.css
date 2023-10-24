@@ -118,3 +118,50 @@
   align-items: center;
   justify-content: space-between;
 }
+
+.card-hover {
+  cursor: pointer;
+  transition: scale 0.2s ease-in-out;
+}
+
+.card-hover:hover {
+  scale: 1.03;
+}
+
+.date-badge {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.info-icon {
+  cursor: pointer;
+  font-size: 28px;
+  color: rgb(114, 200, 88);
+  color: #b3bfcd;
+  transition: color 0.2s ease-in-out;
+}
+
+.info-icon:hover {
+  color: rgb(255, 180, 41);
+}
+
+.category-wrap,
+.price-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* .info-icon--delete {
+  color: rgb(255, 109, 109);
+  cursor: pointer;
+} */
+
+/* .info-icon--edit {
+  color: rgb(88, 200, 196);
+} */
+
+/* .info-icon--info {
+  color: rgb(114, 200, 88);
+} */
