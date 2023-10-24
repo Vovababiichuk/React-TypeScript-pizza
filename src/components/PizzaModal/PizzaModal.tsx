@@ -36,13 +36,13 @@ export const PizzaModal: React.FC<PizzaModalProps> = ({
   console.log(additionalDescription);
 
   return (
-    <Modal isOpen={isOpen} onClose={onClose}>
+    <Modal size={'xl'} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader>{pizza.title}</ModalHeader>
+        <ModalHeader fontWeight={'bold'} fontSize={'24px'}>{pizza.title}</ModalHeader>
         <ModalCloseButton />
         <ModalBody>
-          <Image src={pizza.img} alt={pizza.title} />
+          <Image borderRadius={'lg'} width={'100%'} marginBottom={'10px'} src={pizza.img} alt={pizza.title} />
           <Text>
             <TextTitleDescription>Опис з карточки: </TextTitleDescription>
             {pizza.description}
