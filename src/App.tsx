@@ -26,14 +26,29 @@ const App: FC = () => {
     setPizzasList([...pizzasList, newPizza]);
   };
 
+  const updatePizza = (newPizza: Pizza) => {
+    setPizzasList(pizzasList.map((pizza) => (pizza.id === newPizza.id ? newPizza : pizza)));
+  };
+
   const containerStyle = {
     overflow: 'hidden',
   };
 
+  const deletePizza = (id: number) => {
+    const newPizzasList = (pizzasList.filter((pizza) => pizza.id !== id));
+
+    setPizzasList(newPizzasList);
+  }
+
   return (
     <Router>
       <Routes>
-        <Route path="/all-products" element={<AllProductsPage pizzasList={pizzasList} />} />
+        <Route path="/all-products" element={<AllProductsPage 
+          pizzasList={pizzasList}
+          updatePizza={updatePizza}
+          deletePizza={deletePizza}
+        />}
+        />
         <Route path="/pizza/:id" element={<CardsProducts pizza={pizzasList[0]} />} />
         <Route
           path="/"

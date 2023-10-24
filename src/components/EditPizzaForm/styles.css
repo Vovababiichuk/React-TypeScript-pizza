@@ -1,0 +1,62 @@
+.select-style option {
+  color: rgb(255, 153, 0);
+}
+
+.select-photo {
+  background-color: #1a202c;
+  border-radius: 6px;
+}
+
+.image-list {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: 34px;
+  flex-wrap: wrap;
+  margin-bottom: 18px;
+}
+
+.image-item {
+  /* mix-blend-mode: multiply; */
+}
+
+.img-listCategory {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+
+  border-radius: 10px;
+  /* margin: 10px; */
+  /* border: 1px solid #000; */
+  cursor: grab;
+
+}
+
+.img-listCategory:active {
+  cursor: grabbing;
+}
+
+.drop-text {
+  text-align: center;
+  text-transform: uppercase;
+  color: rgb(255, 180, 41);
+}
+
+.disabled {
+  pointer-events: none; /* Заборона подій */
+  opacity: 0.6; /* Зменшення прозорості */
+}
+
+textarea {
+  margin-bottom: 20px;
+}
+
+.close-icon {
+  text-align: right;
+  font-size: 20px;
+  margin-bottom: 0;
+}
+
+.price-edit {
+  margin-top: -10px;
+}

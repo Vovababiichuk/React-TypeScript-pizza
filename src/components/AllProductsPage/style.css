@@ -153,15 +153,13 @@
   justify-content: space-between;
 }
 
-/* .info-icon--delete {
-  color: rgb(255, 109, 109);
-  cursor: pointer;
-} */
+.edit-windiw {
+  position: absolute;
+  top: -240px;
+  left: 11px;
+  z-index: 1;
+}
 
-/* .info-icon--edit {
-  color: rgb(88, 200, 196);
-} */
-
-/* .info-icon--info {
-  color: rgb(114, 200, 88);
-} */
+.date-badge {
+  position: relative;
+}

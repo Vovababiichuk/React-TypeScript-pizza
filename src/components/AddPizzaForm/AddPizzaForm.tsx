@@ -155,34 +155,42 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
     setErrorMessage('Заповніть всі поля і виберіть фото');
     setTimeout(() => {
       setErrorMessage('');
-    }, 4000);
+    }, 3000);
   };
 
   const handleSubmit = (e: FormEvent<HTMLFormElement> | React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
 
-    console.log('Категорія:', newPizza.category);
-    console.log('Назва продукту:', newPizza.title);
+    // Генеруємо новий `id`
+    const newPizzaWithId = {
+      ...newPizza,
+      id: Math.floor(Math.random() * 9000),
+    };
+
+    console.log('Категорія:', newPizzaWithId.category);
+    console.log('Назва продукту:', newPizzaWithId.title);
     console.log('Вибране фото:', selectedOption);
-    console.log('Ціна:', newPizza.price);
-    console.log('Опис:', newPizza.description);
-    console.log('Дата створення:', newPizza.created);
+    console.log('Ціна:', newPizzaWithId.price);
+    console.log('Опис:', newPizzaWithId.description);
+    console.log('Дата створення:', newPizzaWithId.created);
+    console.log('Додаткова інформація:', newPizzaWithId.additionalDescription);
+    console.log('ID:', newPizzaWithId.id);
 
     if (
-      newPizza.title &&
-      newPizza.price &&
+      newPizzaWithId.title &&
+      newPizzaWithId.price &&
       selectedOption &&
-      newPizza.category &&
-      newPizza.description
+      newPizzaWithId.category &&
+      newPizzaWithId.description
     ) {
       addPizza({
-        id: Math.floor(Math.random() * 9000),
-        title: newPizza.title,
-        price: Number(newPizza.price),
+        id: newPizzaWithId.id,
+        title: newPizzaWithId.title,
+        price: Number(newPizzaWithId.price),
         img: selectedOption,
-        category: newPizza.category, // Додаємо категорію до карточки товару
-        description: newPizza.description,
-        additionalDescription: newPizza.additionalDescription,
+        category: newPizzaWithId.category, // Додаємо категорію до карточки товару
+        description: newPizzaWithId.description,
+        additionalDescription: newPizzaWithId.additionalDescription,
         created: new Date(),
       });
       setNewPizza(initState);
@@ -406,7 +414,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
                 ) : (
                   <>
                     <VisibleTextDrop>Перетягніть картинку сюди</VisibleTextDrop>
-                    <VisibleTextTab>Нажміть на каринку, щоб вибрати</VisibleTextTab>
+                    <VisibleTextTab>Натисніть на каринку, щоб вибрати</VisibleTextTab>
                   </>
                 )}
               </div>

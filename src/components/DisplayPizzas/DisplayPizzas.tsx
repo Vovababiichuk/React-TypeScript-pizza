@@ -6,15 +6,20 @@ import { Link } from 'react-router-dom';
 
 interface DisplayPizzasProps {
   pizzasList: Pizza[];
+  updatePizza: (newPizza: Pizza) => void;
+  deletePizza: (id: number) => void;
 }
 
-export const DisplayPizzas: FC<DisplayPizzasProps> = ({ pizzasList }) => {
+export const DisplayPizzas: FC<DisplayPizzasProps> = ({ pizzasList, updatePizza }) => {
  console.log(pizzasList);
 
   return (
     <div>
       {pizzasList.map((pizza) => (
-        <div key={pizza.id}>
+        <div 
+        key={pizza.id}
+        
+        >
           <Link to={`/pizza/${pizza.id}`}>
             <button>Перейти до {pizza.title}</button>
           </Link>

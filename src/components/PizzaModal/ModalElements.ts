@@ -23,7 +23,7 @@ export const ButtonMinus = styled.button`
 	}
 `
 export const Number = styled.span`
-		font-size: 32px;
+		font-size: 30px;
 		font-weight: bold;
 		color: black;
 `

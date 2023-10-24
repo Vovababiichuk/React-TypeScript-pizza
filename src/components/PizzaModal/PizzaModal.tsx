@@ -85,7 +85,7 @@ export const PizzaModal: React.FC<PizzaModalProps> = ({
             {additionalDescription}
           </Text>
           <Text color="orange" fontSize="2xl">
-            {pizza.price.toFixed(2)} UAH
+            {parseFloat(pizza.price).toFixed(2)} UAH
           </Text>
         </ModalBody>
         <ContainerWrapFlex>
@@ -98,7 +98,7 @@ export const PizzaModal: React.FC<PizzaModalProps> = ({
           </ButtonPlus>
         </ContainerWrapFlex>
         <ModalFooter>
-          <Button width="100%" colorScheme="blue" mr={3} onClick={onClose} fontSize={20}>
+          <Button width="100%" colorScheme="blue" mr={3} onClick={onClose} fontSize={22}>
             Додати {quantity} за {totalCost.toFixed(2)} грн
           </Button>
         </ModalFooter>
