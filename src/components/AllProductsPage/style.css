@@ -121,11 +121,13 @@
 
 .card-hover {
   cursor: pointer;
-  transition: scale 0.2s ease-in-out;
+  transition: background-color 0.40s ease-in-out;
 }
 
 .card-hover:hover {
-  scale: 1.03;
+  /* scale: 1.01; */
+  background-color: rgba(0, 0, 0, 0.296);
+  color: white;
 }
 
 .date-badge {
@@ -139,7 +141,7 @@
   font-size: 28px;
   color: rgb(114, 200, 88);
   color: #cbd3dd;
-  transition: color 0.2s ease-in-out;
+  transition: color 0.2s ease-in-out, border-color 0.2s ease-in-out;
 }
 
 .info-icon:hover {
@@ -163,3 +165,22 @@
 .date-badge {
   position: relative;
 }
+
+.info-icon--info {
+  color: rgb(0, 212, 0);
+  border: 1px solid rgb(0, 212, 0);
+  border-radius: 10px;
+}
+
+.info-icon--info:hover {
+  border-color: rgb(255, 180, 41);
+}
+
+.info-icon--edit {
+  color: rgb(72, 72, 255);
+}
+
+.info-icon--delete {
+  color: rgb(255, 84, 84);
+}
+
