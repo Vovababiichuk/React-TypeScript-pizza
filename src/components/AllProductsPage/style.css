@@ -38,7 +38,7 @@
 .link-back  span {
   display: inline-flex;
   font-size: 24px;
-  color: #8c8c8c;
+  color: #cbcbcb;
   transition: color 0.2s ease-in-out;
 }
 
@@ -74,7 +74,7 @@
   align-items: center;
   gap: 20px; */
   font-size: 80px;
-  color: #595959;
+  color: #cbcbcbcb;
   transition: color 0.2s ease-in-out;
 }
 
@@ -138,7 +138,7 @@
   cursor: pointer;
   font-size: 28px;
   color: rgb(114, 200, 88);
-  color: #b3bfcd;
+  color: #cbd3dd;
   transition: color 0.2s ease-in-out;
 }
 
