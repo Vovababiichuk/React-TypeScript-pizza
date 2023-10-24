@@ -6,6 +6,7 @@ import { Wrapper } from './components/Wrapper/Wrapper';
 import { AddPizzaForm } from './components/AddPizzaForm/AddPizzaForm';
 import './App.css';
 import { motion } from 'framer-motion';
+import Pizza from './models/Pizza';
 import {
   Popover,
   PopoverTrigger,
@@ -197,15 +198,6 @@ const App: FC = () => {
       </Routes>
     </Router>
   );
-};
-
-type Pizza = {
-  id: number;
-  title: string;
-  price: number;
-  img: string;
-  category: string;
-  description: string;
 };
 
 export default App;
