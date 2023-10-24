@@ -35,6 +35,13 @@ interface AllProductsPageProps {
   pizzasList: Pizza[];
 }
 
+interface PizzaModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  pizza: Pizza | null;
+  additionalDescription: string;
+}
+
 const formatUADateTime = (date: Date) => {
   const options = {
     year: 'numeric',
@@ -49,16 +56,64 @@ const formatUADateTime = (date: Date) => {
 
 console.log(formatUADateTime());
 
+
+
 export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) => {
   console.log(pizzasList);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
   const [selectedPizza, setSelectedPizza] = useState<Pizza | null>(null);
 
+  const [additionalDescription, setAdditionalDescription] = useState<string>('');
+
+
+  const additionalDescriptions: { [key: string]: string } = {
+    '💥 Піца 3 Мяса': 'Додатковий опис для Піци 3 Мяса',
+    '💥 Піца Європейська': 'Додатковий опис для Піци Європейська',
+    '💥 Піца 4 Сири': 'Додатковий опис для Піци 4 Сири',
+    '💥 Піца Цезар': 'Додатковий опис для Піци Цезар',
+    '💥 Піца Діабло': 'Додатковий опис для Піци Діабло',
+    "💥 Піца Барбек'ю": "Додатковий опис для Піци Барбек'ю",
+    '💥 Піца Венеція': 'Додатковий опис для Піци Венеція',
+    '💥 Піца Монтана': 'Додатковий опис для Піци Монтана',
+    '💥 Піца Фунгі': 'Додатковий опис для Піци Фунгі',
+    '💥 Піца "БУМ"': 'Додатковий опис для Піци "БУМ"',
+    '💥 Фіш & Чіпс': 'Додатковий опис для Фіш & Чіпс',
+    '💥 Чікен & Чіпс': 'Додатковий опис для Чікен & Чіпс',
+    '💥 Цибулеві кільця New York': 'Додатковий опис для Цибулеві кільця New York',
+    '💥 Картопля Фрі': 'Додатковий опис для Картопля Фрі',
+    '💥 Картопля по-селянськи': 'Додатковий опис для Картопля по-селянськи',
+    '💥 Салат Сантана (250г)': 'Додатковий опис для Салат Сантана (250г)',
+    '💥 Салат з курки (250г)': 'Додатковий опис для Салат з курки (250г)',
+    '💥 Салат Каліфорнія (250г)': 'Додатковий опис для Салат Каліфорнія (250г)',
+    '💥 Салат Грецький (250г)': 'Додатковий опис для Салат Грецький (250г)',
+    '💥 Салат Проковтний язик (250г)': 'Додатковий опис для Салат Проковтний язик (250г)',
+  };
+
+  const newPizza: Pizza = {
+    id: 0,
+    title: 'New Pizza',
+    price: 0,
+    img: '',
+    category: '',
+    description: '',
+    created: new Date(),
+    additionalDescription: '',
+  }
+
+  const selectedDescription = additionalDescription;
+
+
   const openModalWithPizza = (pizza: Pizza) => {
+    // Отримайте додатковий опис на основі назви піци
+    const additionalDescription = additionalDescriptions[pizza.title] || '';
+    
+    setAdditionalDescription(additionalDescription);
     setSelectedPizza(pizza);
     onOpen();
   };
+  
+  
 
   const categoryToBadge: Record<string, string> = {
     option4: 'Основні страви',
@@ -132,7 +187,7 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
                         <AiTwotoneEdit />
                       </span>
                     </div>
-                    <div className='price-wrap'>
+                    <div className="price-wrap">
                       <span>
                         <Text color="orange" fontSize="2xl">
                           {pizza.price.toFixed(2)} UAH
@@ -175,7 +230,7 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList }) 
           <LinkMenu to="#" imgSrc="../../../public/img/link/link11.png" text="Кур'єр" />
         </Flex>
       </Box>
-      <PizzaModal isOpen={isOpen} onClose={onClose} pizza={selectedPizza} />
+      <PizzaModal isOpen={isOpen} onClose={onClose} pizza={selectedPizza} additionalDescription={additionalDescription} />
     </Wrapper>
   );
 };

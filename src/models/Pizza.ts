@@ -5,6 +5,7 @@ type Pizza = {
 	img: string,
 	category: string,
 	description: string,
+	additionalDescription: string;
 	created: Date,
 }
 
