@@ -122,9 +122,9 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
   }, []);
 
   const handleChange = (
-    e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement>,
+    e: React.ChangeEvent<HTMLSelectElement> | React.ChangeEvent<HTMLInputElement> | React.ChangeEvent<HTMLTextAreaElement>,
   ) => {
-    const { name, value } = e.target as HTMLInputElement;
+    const { name, value } = e.target as HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement;
 
     setNewPizza({
       ...newPizza,
