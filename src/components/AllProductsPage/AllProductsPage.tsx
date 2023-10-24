@@ -8,7 +8,6 @@ import { TiInfoLargeOutline } from 'react-icons/ti';
 import { AiTwotoneEdit } from 'react-icons/ai';
 import { MdDelete } from 'react-icons/md';
 import { EditPizzaForm } from '../EditPizzaForm/EditPizzaForm';
-import { EditWindow } from './AllProductsPageElements';
 
 import {
   Card,
@@ -131,17 +130,57 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList, up
     option5: 'Салати',
   };
 
+
+//!========================
+
+const [editStates, setEditStates] = useState<{ [id: number]: boolean }>({});
+
+const handleToggleEdit = (id: number) => {
+  setEditStates((prevEditStates) => ({
+    ...prevEditStates,
+    [id]: !prevEditStates[id],
+  }));
+};
+
+const handleToggleDelete = (id: number) => {
+  setEditStates((prevEditStates) => ({
+    ...prevEditStates,
+    [id]: !prevEditStates[id],
+  }));
+};
+
+const handleDelete = (id: number) => {
+  deletePizza(id);
+  handleToggleDelete(id);
+};
+
+const handleEdit = (id: number) => {
+  updatePizza(id);
+  handleToggleEdit(id);
+};
+//!========================
+
+  
   //NOTE -  edit логіка
   const [edit, setEdit] = useState<boolean>(false);
 
-  const handleToggleEdit = () => {
-    setEdit(!edit);
-  };
+  // const handleToggleEdit = () => {
+  //   setEdit(!edit);
+  // };
 
-  const handleDelete = () => {
-    deletePizza(data.id);
-    handleToggleEdit();
-  }
+  // const handleToggleDelete = () => {
+  //   setEdit(!edit);
+  // }
+
+  // const handleDelete = (id) => {
+  //   deletePizza(id);
+  //   handleToggleDelete();
+  // }
+
+  // const handleEdit = (id) => {
+  //   updatePizza(id);
+  //   handleToggleEdit();
+  // }
 
   return (
     <Wrapper>
@@ -203,11 +242,13 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList, up
                         </Badge>
                       </span>
                       <span className="info-icon info-icon--edit">
-                        <AiTwotoneEdit onClick={handleToggleEdit} />
+                        {/* <AiTwotoneEdit onClick={handleToggleEdit} /> */}
+                        <AiTwotoneEdit onClick={() => handleToggleEdit(pizza.id)} />
                       </span>
 
-                      {edit ? (
-                          <div className='edit-windiw'><EditPizzaForm data={pizza} updatePizza={updatePizza} handleToggleEdit={handleToggleEdit} /></div>
+                      {editStates[pizza.id] ? (
+                          // <div className='edit-windiw'><EditPizzaForm data={pizza} updatePizza={updatePizza} handleToggleEdit={handleToggleEdit} /></div>
+                          <div className='edit-windiw'><EditPizzaForm data={pizza} updatePizza={handleEdit} handleToggleEdit={() => handleToggleEdit(pizza.id)} /></div>
                         ) : null}
 
                     </div>
@@ -218,7 +259,7 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList, up
                         </Text>
                       </span>
                       <span className="info-icon info-icon--delete">
-                        <MdDelete onClick={handleDelete} />
+                        <MdDelete onClick={() => handleDelete(pizza.id)} />
                       </span>
                     </div>
                   </Stack>

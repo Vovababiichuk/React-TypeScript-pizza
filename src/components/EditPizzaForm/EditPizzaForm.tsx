@@ -95,7 +95,7 @@ export const EditPizzaForm: FC<EditPizzaFormProps> = ({ data, updatePizza, handl
         <FormControl>
           <Stack marginBottom={5} spacing={3} gap={0}>
             <div className="close-icon">
-              <span onClick={handleDelete}>❌</span>
+              <span onClick={handleToggleEdit}>❌</span>
             </div>
             {/* //NOTE - Price */}
             <div className='price-edit'>
