@@ -8,7 +8,7 @@ import { Alert, AlertIcon, AlertTitle, AlertDescription } from '@chakra-ui/react
 import { DefaultImageList, MobileImageList } from './stylePizzaComponent';
 import { Textarea } from '@chakra-ui/react';
 
-import { BoxMyContainer } from './stylePizzaComponent';
+import { BoxMyContainer, VisibleTextDrop, VisibleTextTab } from './stylePizzaComponent';
 
 interface AddPizzaFormProps {
   addPizza: (newPizza: Pizza) => void;
@@ -98,7 +98,6 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
       '💥 Салат Проковтний язик (250г)',
     ],
   };
-
 
   const [currentProductOptions, setCurrentProductOptions] = useState(
     productOptions[newPizza.category] || [],
@@ -227,16 +226,16 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
 
   return (
     <BoxMyContainer
-      // className="box-form"
-      // bgImage={'public/img/bg-cut.jpg'}
-      // backgroundSize={'cover'}
-      // backgroundPosition={'center'}
-      // borderRadius="lg"
-      // w="600px"
-      // p={4}
-      // color="white"
-      // border="1px solid orange.300"
-      >
+    // className="box-form"
+    // bgImage={'public/img/bg-cut.jpg'}
+    // backgroundSize={'cover'}
+    // backgroundPosition={'center'}
+    // borderRadius="lg"
+    // w="600px"
+    // p={4}
+    // color="white"
+    // border="1px solid orange.300"
+    >
       <FormControl>
         <Stack marginBottom={5} spacing={3}>
           <div>
@@ -405,7 +404,10 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
                 {newPizza.img ? (
                   <img src={newPizza.img} alt="Вибране фото" />
                 ) : (
-                  'Перетягніть сюди картинку'
+                  <>
+                    <VisibleTextDrop>Перетягніть картинку сюди</VisibleTextDrop>
+                    <VisibleTextTab>Нажміть на каринку, щоб вибрати</VisibleTextTab>
+                  </>
                 )}
               </div>
             </div>

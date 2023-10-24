@@ -29,3 +29,20 @@ export const BoxMyContainer = styled.div`
 	border-radius: 10px;
 	margin: 0 auto;
 `
+
+export const VisibleTextDrop = styled.div`
+	display: block;
+
+	@media (max-width: 768px) {
+		display: none;
+	}
+`
+export const VisibleTextTab = styled.div`
+	display: none;
+
+	@media (max-width: 768px) {
+		display: block;
+	}
+
+	font-size: 15px;
+`
