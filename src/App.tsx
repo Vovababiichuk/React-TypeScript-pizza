@@ -100,7 +100,7 @@ const App: FC = () => {
                                   <div className="data">
                                     <img
                                       className="img-link-app"
-                                      src="/img/link/link1.webp"
+                                      src="/img/link/link1.png"
                                       alt=""
                                     />
                                   </div>
@@ -135,7 +135,7 @@ const App: FC = () => {
                                     <div className="data">
                                       <img
                                         className="img-link-app"
-                                        src="/img/link/link2.webp"
+                                        src="/img/link/link2.png"
                                         alt=""
                                       />
                                     </div>
@@ -180,7 +180,7 @@ const App: FC = () => {
                                     <div className="data">
                                       <img
                                         className="img-link-app"
-                                        src="/img/link/link4.webp"
+                                        src="/img/link/link4.png"
                                         alt=""
                                       />
                                     </div>
