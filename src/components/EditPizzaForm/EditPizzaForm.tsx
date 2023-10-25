@@ -127,6 +127,8 @@ export const EditPizzaForm: FC<EditPizzaFormProps> = ({ data, updatePizza, handl
             </div>
           </Stack>
           {/* //NOTE - Textarea */}
+
+          
           <div>
             <FormLabel color="rgb(255, 180, 41)">Опис</FormLabel>
             <Textarea
