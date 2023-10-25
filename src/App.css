@@ -102,7 +102,7 @@
 
 .blob {
   align-items: center;
-  background-image: url("../public/img/bg18.jpg");
+  background-image: url("./public/img/bg18.jpg");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
