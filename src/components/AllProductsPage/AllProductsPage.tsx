@@ -50,7 +50,11 @@ const formatUADateTime = (date: Date) => {
   return new Intl.DateTimeFormat('uk-UA', options).format(date);
 };
 
-export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList, updatePizza, deletePizza }) => {
+export const AllProductsPage: React.FC<AllProductsPageProps> = ({
+  pizzasList,
+  updatePizza,
+  deletePizza,
+}) => {
   console.log(pizzasList);
 
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -108,33 +112,32 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList, up
     option5: 'Салати',
   };
 
+  const [editStates, setEditStates] = useState<{ [id: number]: boolean }>({});
 
-const [editStates, setEditStates] = useState<{ [id: number]: boolean }>({});
+  const handleToggleEdit = (id: number) => {
+    setEditStates((prevEditStates) => ({
+      ...prevEditStates,
+      [id]: !prevEditStates[id],
+    }));
+  };
 
-const handleToggleEdit = (id: number) => {
-  setEditStates((prevEditStates) => ({
-    ...prevEditStates,
-    [id]: !prevEditStates[id],
-  }));
-};
+  const handleToggleDelete = (id: number) => {
+    setEditStates((prevEditStates) => ({
+      ...prevEditStates,
+      [id]: !prevEditStates[id],
+    }));
+  };
 
-const handleToggleDelete = (id: number) => {
-  setEditStates((prevEditStates) => ({
-    ...prevEditStates,
-    [id]: !prevEditStates[id],
-  }));
-};
+  const handleDelete = (id: number) => {
+    deletePizza(id);
+    handleToggleDelete(id);
+  };
 
-const handleDelete = (id: number) => {
-  deletePizza(id);
-  handleToggleDelete(id);
-};
-
-const handleEdit = (id: number) => {
-  //@ts-ignore
-  updatePizza(id);
-  handleToggleEdit(id);
-};
+  const handleEdit = (id: number) => {
+    //@ts-ignore
+    updatePizza(id);
+    handleToggleEdit(id);
+  };
 
   return (
     <Wrapper>
@@ -201,10 +204,15 @@ const handleEdit = (id: number) => {
                       </span>
 
                       {editStates[pizza.id] ? (
-                       //@ts-ignore
-                          <div className='edit-windiw'><EditPizzaForm data={pizza} updatePizza={handleEdit} handleToggleEdit={() => handleToggleEdit(pizza.id)} /></div>
-                        ) : null}
-
+                        <div className="edit-windiw">
+                          <EditPizzaForm
+                            data={pizza}
+                            //@ts-ignore
+                            updatePizza={handleEdit}
+                            handleToggleEdit={() => handleToggleEdit(pizza.id)}
+                          />
+                        </div>
+                      ) : null}
                     </div>
                     <div className="price-wrap">
                       <span>
@@ -240,7 +248,11 @@ const handleEdit = (id: number) => {
       </Container>
       <Box>
         <Flex className="link-cards" gap={'30px'} justifyContent={'center'} alignItems={'center'}>
-          <LinkMenu to="/" imgSrc="/img/link/link10.png" text="Формування Меню" />
+          <LinkMenu
+            to="/"
+            imgSrc="/img/link/link10.png"
+            text="Формування Меню"
+          />
           <LinkMenu
             to="#"
             imgSrc="/img/link/link12.png"
