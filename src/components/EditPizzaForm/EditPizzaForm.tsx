@@ -56,7 +56,7 @@ export const EditPizzaForm: FC<EditPizzaFormProps> = ({ data, updatePizza, handl
       console.log('edit pizza >>> ', editPizza);
 
       updatePizza(editPizza);
-       
+
       handleToggleEdit();
 
       showSuccessAlert();
