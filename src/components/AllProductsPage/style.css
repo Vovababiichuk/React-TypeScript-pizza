@@ -126,8 +126,9 @@
 
 .card-hover:hover {
   /* scale: 1.01; */
-  background-color: rgba(0, 0, 0, 0.296);
+  background-color: rgba(0, 0, 0, 0.8);
   color: white;
+  border: 1px solid #fff;
 }
 
 .date-badge {

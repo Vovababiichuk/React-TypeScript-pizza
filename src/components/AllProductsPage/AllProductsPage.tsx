@@ -38,15 +38,8 @@ interface AllProductsPageProps {
   deletePizza: (id: number) => void;
 }
 
-interface PizzaModalProps {
-  isOpen: boolean;
-  onClose: () => void;
-  pizza: Pizza | null;
-  additionalDescription: string;
-}
-
 const formatUADateTime = (date: Date) => {
-  const options = {
+  const options: Intl.DateTimeFormatOptions = {
     year: 'numeric',
     month: 'long',
     day: 'numeric',
@@ -56,8 +49,6 @@ const formatUADateTime = (date: Date) => {
   };
   return new Intl.DateTimeFormat('uk-UA', options).format(date);
 };
-
-console.log(formatUADateTime());
 
 export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList, updatePizza, deletePizza }) => {
   console.log(pizzasList);
@@ -112,10 +103,8 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList, up
     additionalDescription: '',
   };
 
-  const selectedDescription = additionalDescription;
-
   const openModalWithPizza = (pizza: Pizza) => {
-    // Отримайте додатковий опис на основі назви піци
+    // додатковий опис на основі назви піци
     const additionalDescription = additionalDescriptions[pizza.title] || '';
 
     setAdditionalDescription(additionalDescription);
@@ -130,8 +119,6 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList, up
     option5: 'Салати',
   };
 
-
-//!========================
 
 const [editStates, setEditStates] = useState<{ [id: number]: boolean }>({});
 
@@ -157,37 +144,15 @@ const handleDelete = (id: number) => {
 const handleEdit = (id: number) => {
   updatePizza(id);
   handleToggleEdit(id);
+
 };
-//!========================
-
-  
-  //NOTE -  edit логіка
-  const [edit, setEdit] = useState<boolean>(false);
-
-  // const handleToggleEdit = () => {
-  //   setEdit(!edit);
-  // };
-
-  // const handleToggleDelete = () => {
-  //   setEdit(!edit);
-  // }
-
-  // const handleDelete = (id) => {
-  //   deletePizza(id);
-  //   handleToggleDelete();
-  // }
-
-  // const handleEdit = (id) => {
-  //   updatePizza(id);
-  //   handleToggleEdit();
-  // }
 
   return (
     <Wrapper>
       <Container maxW="1300px" centerContent marginBottom={'30px'}>
         <div className="heading-wrap">
           <div className="arrow-hover">
-            <Link className="link-back" to="/" imgSrc="../../../public/img/link/link10.png">
+            <Link className="link-back" to="/">
               <span>
                 <FaBackward />
                 <FaBackward />
@@ -247,7 +212,6 @@ const handleEdit = (id: number) => {
                       </span>
 
                       {editStates[pizza.id] ? (
-                          // <div className='edit-windiw'><EditPizzaForm data={pizza} updatePizza={updatePizza} handleToggleEdit={handleToggleEdit} /></div>
                           <div className='edit-windiw'><EditPizzaForm data={pizza} updatePizza={handleEdit} handleToggleEdit={() => handleToggleEdit(pizza.id)} /></div>
                         ) : null}
 
@@ -286,13 +250,13 @@ const handleEdit = (id: number) => {
       </Container>
       <Box>
         <Flex className="link-cards" gap={'30px'} justifyContent={'center'} alignItems={'center'}>
-          <LinkMenu to="/" imgSrc="../../../public/img/link/link10.png" text="Формування Меню" />
+          <LinkMenu to="/" imgSrc="public/img/link/link10.png" text="Формування Меню" />
           <LinkMenu
             to="#"
-            imgSrc="../../../public/img/link/link12.png"
+            imgSrc="public/img/link/link12.png"
             text="Магазини та подарунки"
           />
-          <LinkMenu to="#" imgSrc="../../../public/img/link/link11.png" text="Кур'єр" />
+          <LinkMenu to="#" imgSrc="public/img/link/link11.png" text="Кур'єр" />
         </Flex>
       </Box>
       <PizzaModal

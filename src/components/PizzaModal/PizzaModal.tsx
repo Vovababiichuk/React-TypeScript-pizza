@@ -19,7 +19,6 @@ import {
   ButtonPlus,
   ButtonMinus,
   Number,
-  ContainerDiv,
   ContainerWrapFlex,
 } from './ModalElements.ts';
 import { FaPlus } from 'react-icons/fa';
@@ -38,14 +37,18 @@ export const PizzaModal: React.FC<PizzaModalProps> = ({
   pizza,
   additionalDescription,
 }) => {
+
+  const [quantity, setQuantity] = useState(1);
+
   if (!pizza) {
     return null;
   }
 
+
+
   console.log(pizza);
   console.log(additionalDescription);
 
-  const [quantity, setQuantity] = useState(1);
   const pricePerPizza = pizza.price;
 
   const incrementQuantity = () => {
@@ -64,17 +67,17 @@ export const PizzaModal: React.FC<PizzaModalProps> = ({
     <Modal size={'xl'} isOpen={isOpen} onClose={onClose}>
       <ModalOverlay />
       <ModalContent>
-        <ModalHeader fontWeight={'bold'} fontSize={'24px'}>
+        <ModalHeader fontWeight={'bold'} fontSize={'24px'} paddingBottom={0}>
           {pizza.title}
         </ModalHeader>
         <ModalCloseButton />
         <ModalBody>
           <Image
             borderRadius={'lg'}
-            width={'100%'}
-            marginBottom={'10px'}
+            width={'80%'}
             src={pizza.img}
             alt={pizza.title}
+            marginBottom={'12px'}
           />
           <Text>
             <TextTitleDescription>Опис з карточки: </TextTitleDescription>
@@ -85,7 +88,8 @@ export const PizzaModal: React.FC<PizzaModalProps> = ({
             {additionalDescription}
           </Text>
           <Text color="orange" fontSize="2xl">
-            {parseFloat(pizza.price).toFixed(2)} UAH
+            {/* {pizza.price.toFixed(2)} UAH */}
+            {typeof pizza.price === 'number' ? pizza.price.toFixed(2).toString() : 'Invalid Price'} UAH
           </Text>
         </ModalBody>
         <ContainerWrapFlex>
@@ -98,7 +102,7 @@ export const PizzaModal: React.FC<PizzaModalProps> = ({
           </ButtonPlus>
         </ContainerWrapFlex>
         <ModalFooter>
-          <Button width="100%" colorScheme="blue" mr={3} onClick={onClose} fontSize={22}>
+          <Button width="100%" colorScheme="orange" mr={3} onClick={onClose} fontSize={22}>
             Додати {quantity} за {totalCost.toFixed(2)} грн
           </Button>
         </ModalFooter>
