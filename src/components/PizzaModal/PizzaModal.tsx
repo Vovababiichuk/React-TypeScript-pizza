@@ -45,7 +45,6 @@ export const PizzaModal: React.FC<PizzaModalProps> = ({
   }
 
 
-
   console.log(pizza);
   console.log(additionalDescription);
 
