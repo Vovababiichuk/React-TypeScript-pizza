@@ -20,7 +20,7 @@ export const MobileImageList = styled.div`
 export const BoxMyContainer = styled.div`
 	width: 100%;
 	max-width: 600px;
-	background-image: url('/img/bg-cut.jpg');
+	background-image: url('/img/bg-cut.webp');
 	background-size: cover;
 	/* background-position: center; */
 	color: #fff;
