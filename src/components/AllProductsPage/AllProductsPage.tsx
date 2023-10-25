@@ -92,17 +92,6 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({ pizzasList, up
     '💥 Салат Проковтний язик (250г)': 'Язик, консервовані печериці, морква, кукурудза, майонез',
   };
 
-  const newPizza: Pizza = {
-    id: 0,
-    title: 'New Pizza',
-    price: 0,
-    img: '',
-    category: '',
-    description: '',
-    created: new Date(),
-    additionalDescription: '',
-  };
-
   const openModalWithPizza = (pizza: Pizza) => {
     // додатковий опис на основі назви піци
     const additionalDescription = additionalDescriptions[pizza.title] || '';
@@ -142,9 +131,9 @@ const handleDelete = (id: number) => {
 };
 
 const handleEdit = (id: number) => {
+  //@ts-ignore
   updatePizza(id);
   handleToggleEdit(id);
-
 };
 
   return (
@@ -212,6 +201,7 @@ const handleEdit = (id: number) => {
                       </span>
 
                       {editStates[pizza.id] ? (
+                       //@ts-ignore
                           <div className='edit-windiw'><EditPizzaForm data={pizza} updatePizza={handleEdit} handleToggleEdit={() => handleToggleEdit(pizza.id)} /></div>
                         ) : null}
 
@@ -219,7 +209,7 @@ const handleEdit = (id: number) => {
                     <div className="price-wrap">
                       <span>
                         <Text color="orange" fontSize="2xl">
-                          {parseFloat(pizza.price).toFixed(2)} UAH
+                          {Number(pizza.price).toFixed(2)} UAH
                         </Text>
                       </span>
                       <span className="info-icon info-icon--delete">

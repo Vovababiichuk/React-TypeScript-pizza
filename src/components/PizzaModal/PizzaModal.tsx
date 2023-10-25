@@ -89,7 +89,8 @@ export const PizzaModal: React.FC<PizzaModalProps> = ({
           </Text>
           <Text color="orange" fontSize="2xl">
             {/* {pizza.price.toFixed(2)} UAH */}
-            {typeof pizza.price === 'number' ? pizza.price.toFixed(2).toString() : 'Invalid Price'} UAH
+            {pizza.price.toLocaleString('en-US', { minimumFractionDigits: 2 })} UAH
+            {/* {typeof pizza.price === 'number' ? pizza.price.toFixed(2).toString() : pizza.price.toLocaleString('en-US', { minimumFractionDigits: 2 })} UAH */}
           </Text>
         </ModalBody>
         <ContainerWrapFlex>

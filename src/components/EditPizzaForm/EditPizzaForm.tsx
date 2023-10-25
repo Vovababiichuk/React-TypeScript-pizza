@@ -74,10 +74,10 @@ export const EditPizzaForm: FC<EditPizzaFormProps> = ({ data, updatePizza, handl
     });
   };
 
-  const handleDelete = () => {
-    deletePizza(data.id);
-    handleToggleEdit();
-  }
+  // const handleDelete = () => {
+  //   deletePizza(data.id);
+  //   handleToggleEdit();
+  // }
 
   return (
     <BoxMyContainer
@@ -135,6 +135,7 @@ export const EditPizzaForm: FC<EditPizzaFormProps> = ({ data, updatePizza, handl
               borderColor="orange.300"
               name="description"
               value={editPizza.description}
+              //@ts-ignore
               onChange={handleChange}
               placeholder="Додайте опис"
             />
