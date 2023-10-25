@@ -82,7 +82,7 @@ export const EditPizzaForm: FC<EditPizzaFormProps> = ({ data, updatePizza, handl
   return (
     <BoxMyContainer
     // className="box-form"
-    // bgImage={'public/img/bg-cut.jpg'}
+    // bgImage={'/img/bg-cut.jpg'}
     // backgroundSize={'cover'}
     // backgroundPosition={'center'}
     // borderRadius="lg"

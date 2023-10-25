@@ -240,13 +240,13 @@ const handleEdit = (id: number) => {
       </Container>
       <Box>
         <Flex className="link-cards" gap={'30px'} justifyContent={'center'} alignItems={'center'}>
-          <LinkMenu to="/" imgSrc="./public/img/link/link10.png" text="Формування Меню" />
+          <LinkMenu to="/" imgSrc="/img/link/link10.png" text="Формування Меню" />
           <LinkMenu
             to="#"
-            imgSrc="./public/img/link/link12.png"
+            imgSrc="/img/link/link12.png"
             text="Магазини та подарунки"
           />
-          <LinkMenu to="#" imgSrc="./public/img/link/link11.png" text="Кур'єр" />
+          <LinkMenu to="#" imgSrc="/img/link/link11.png" text="Кур'єр" />
         </Flex>
       </Box>
       <PizzaModal

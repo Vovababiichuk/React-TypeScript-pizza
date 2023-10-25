@@ -34,35 +34,35 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
 
   const imageLists: { [key: string]: string[] } = {
     option2: [
-      './public/img/hit/1.png',
-      './public/img/hit/2.png',
-      './public/img/hit/3.png',
-      './public/img/hit/4.png',
-      './public/img/hit/5.png',
+      '/img/hit/1.png',
+      '/img/hit/2.png',
+      '/img/hit/3.png',
+      '/img/hit/4.png',
+      '/img/hit/5.png',
     ],
 
     option3: [
-      './public/img/new/1.png',
-      './public/img/new/2.png',
-      './public/img/new/3.png',
-      './public/img/new/4.png',
-      './public/img/new/5.png',
+      '/img/new/1.png',
+      '/img/new/2.png',
+      '/img/new/3.png',
+      '/img/new/4.png',
+      '/img/new/5.png',
     ],
 
     option4: [
-      './public/img/food/1.png',
-      './public/img/food/2.png',
-      './public/img/food/3.png',
-      './public/img/food/4.png',
-      './public/img/food/5.png',
+      '/img/food/1.png',
+      '/img/food/2.png',
+      '/img/food/3.png',
+      '/img/food/4.png',
+      '/img/food/5.png',
     ],
 
     option5: [
-      './public/img/salad/1.png',
-      './public/img/salad/2.png',
-      './public/img/salad/3.png',
-      './public/img/salad/4.png',
-      './public/img/salad/5.png',
+      '/img/salad/1.png',
+      '/img/salad/2.png',
+      '/img/salad/3.png',
+      '/img/salad/4.png',
+      '/img/salad/5.png',
     ],
   };
 
@@ -235,7 +235,7 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
   return (
     <BoxMyContainer
     // className="box-form"
-    // bgImage={'public/img/bg-cut.jpg'}
+    // bgImage={'/img/bg-cut.jpg'}
     // backgroundSize={'cover'}
     // backgroundPosition={'center'}
     // borderRadius="lg"
