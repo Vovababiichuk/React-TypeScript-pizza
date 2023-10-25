@@ -97,7 +97,6 @@ export const EditPizzaForm: FC<EditPizzaFormProps> = ({ data, updatePizza, handl
             <div className="close-icon">
               <span onClick={handleToggleEdit}>❌</span>
             </div>
-            {/* //NOTE - Price */}
             <div className='price-edit'>
               <FormLabel color="rgb(255, 180, 41)">Ціна</FormLabel>
               <Input
@@ -126,9 +125,6 @@ export const EditPizzaForm: FC<EditPizzaFormProps> = ({ data, updatePizza, handl
               />
             </div>
           </Stack>
-          {/* //NOTE - Textarea */}
-
-          
           <div>
             <FormLabel color="rgb(255, 180, 41)">Опис</FormLabel>
             <Textarea
@@ -142,7 +138,6 @@ export const EditPizzaForm: FC<EditPizzaFormProps> = ({ data, updatePizza, handl
               placeholder="Додайте опис"
             />
           </div>
-          {/* //NOTE - Button with Alert */}
           <Center>
             <Stack direction="row" spacing={4}>
               <Button
