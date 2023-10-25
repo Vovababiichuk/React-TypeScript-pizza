@@ -6,7 +6,7 @@ export const TextTitleDescription = styled.span`
 `
 export const ButtonPlus = styled.button`
 	font-size: 26px;
-	color: gray;
+	color: red;
 	transition: color 0.2s ease-in-out;
 
 	&:hover {
@@ -15,7 +15,7 @@ export const ButtonPlus = styled.button`
 `
 export const ButtonMinus = styled.button`
 	font-size: 26px;
-	color: gray;
+	color: red;
 	transition: color 0.2s ease-in-out;
 
 	&:hover {
@@ -26,6 +26,9 @@ export const Number = styled.span`
 		font-size: 30px;
 		font-weight: bold;
 		color: black;
+		background-color: orange;
+		padding: 0 18px;
+		border-radius: 20px;
 `
 export const ContainerDiv = styled.div`
 `
