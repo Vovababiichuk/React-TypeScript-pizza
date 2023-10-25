@@ -34,35 +34,35 @@ export const AddPizzaForm: FC<AddPizzaFormProps> = ({ addPizza }) => {
 
   const imageLists: { [key: string]: string[] } = {
     option2: [
-      '/img/hit/1.png',
-      '/img/hit/2.png',
-      '/img/hit/3.png',
-      '/img/hit/4.png',
-      '/img/hit/5.png',
+      '/img/hit/1.webp',
+      '/img/hit/2.webp',
+      '/img/hit/3.webp',
+      '/img/hit/4.webp',
+      '/img/hit/5.webp',
     ],
 
     option3: [
-      '/img/new/1.png',
-      '/img/new/2.png',
-      '/img/new/3.png',
-      '/img/new/4.png',
-      '/img/new/5.png',
+      '/img/new/1.webp',
+      '/img/new/2.webp',
+      '/img/new/3.webp',
+      '/img/new/4.webp',
+      '/img/new/5.webp',
     ],
 
     option4: [
-      '/img/food/1.png',
-      '/img/food/2.png',
-      '/img/food/3.png',
-      '/img/food/4.png',
-      '/img/food/5.png',
+      '/img/food/1.webp',
+      '/img/food/2.webp',
+      '/img/food/3.webp',
+      '/img/food/4.webp',
+      '/img/food/5.webp',
     ],
 
     option5: [
-      '/img/salad/1.png',
-      '/img/salad/2.png',
-      '/img/salad/3.png',
-      '/img/salad/4.png',
-      '/img/salad/5.png',
+      '/img/salad/1.webp',
+      '/img/salad/2.webp',
+      '/img/salad/3.webp',
+      '/img/salad/4.webp',
+      '/img/salad/5.webp',
     ],
   };
 

@@ -250,15 +250,15 @@ export const AllProductsPage: React.FC<AllProductsPageProps> = ({
         <Flex className="link-cards" gap={'30px'} justifyContent={'center'} alignItems={'center'}>
           <LinkMenu
             to="/"
-            imgSrc="/img/link/link10.png"
+            imgSrc="/img/link/link10.webp"
             text="Формування Меню"
           />
           <LinkMenu
             to="#"
-            imgSrc="/img/link/link12.png"
+            imgSrc="/img/link/link12.webp"
             text="Магазини та подарунки"
           />
-          <LinkMenu to="#" imgSrc="/img/link/link11.png" text="Кур'єр" />
+          <LinkMenu to="#" imgSrc="/img/link/link11.webp" text="Кур'єр" />
         </Flex>
       </Box>
       <PizzaModal

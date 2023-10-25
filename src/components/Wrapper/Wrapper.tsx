@@ -5,7 +5,7 @@ import { chakra } from "@chakra-ui/react";
 			bg: "rgba(0, 0, 0, 0.7)",
 			backgroundBlendMode: "multiply",
 			minHeight: "100vh",
-			backgroundImage: "/img/bg7.jpg",
+			backgroundImage: "/img/bg7.webp",
 			backgroundRepeat: "no-repeat",
 			backgroundSize: "cover",
 			// backgroundPosition: "center",

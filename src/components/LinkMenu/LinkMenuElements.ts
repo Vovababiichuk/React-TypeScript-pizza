@@ -44,7 +44,7 @@ export const Shadow = styled.div`
 `
 export const Blob = styled.div`
   align-items: center;
-  background-image: url("/img/bg18.jpg");
+  background-image: url("/img/bg18.webp");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
