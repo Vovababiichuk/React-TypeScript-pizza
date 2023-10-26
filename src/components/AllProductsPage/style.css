@@ -121,14 +121,11 @@
 
 .card-hover {
   cursor: pointer;
-  transition: background-color 0.40s ease-in-out;
+  transition: scale 0.2s ease-in-out;
 }
 
 .card-hover:hover {
-  /* scale: 1.01; */
-  background-color: rgba(0, 0, 0, 0.8);
-  color: white;
-  border: 1px solid #fff;
+  scale: 1.01;
 }
 
 .date-badge {
